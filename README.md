@@ -1,50 +1,78 @@
 # Biotech Radar
 
-Geautomatiseerde pipeline + interactieve agent voor NL biotech signalen.
+Biotech Radar is een zelfstandige projectrepo voor het signaleren, filteren en duiden van biotech-signalen met relevantie voor:
+- Nederlandse voedseltransitie
+- verwerkende foodsector
+- opschaling
+- markttoetreding
+- beleidskeuzes
 
-## Structuur
+## Huidige architectuur
 
-```
-pipeline/
-  1_ophalen.py     → Brave Search → SQLite
-  2_filteren.py    → keyword filter
-  3_prioriteren.py → PESTLE scoring
-  4_synthese.py    → LLM briefing
-  5_publiceren.py  → Telegram
-agent/
-  agent.py         → interactieve queries op DB
+```text
 config/
-  rubric.yaml      → PESTLE weging + thema's
-  sources.yaml     → Tier 1/2 bronnen
-data/
-  signals.db       → gedeeld geheugen
-  briefing_latest.md
+  sources.yaml      -> centraal bronregister
+  rubric.yaml       -> scope, keywords, policy markers, scoringlogica
+  prompts.yaml      -> prompts voor LLM-duiding
+
+pipeline/
+  1_ophalen.py         -> ingest van RSS/API-bronnen
+  1.5_dedupe.py        -> canonicaliseert doublures + bewaart cross-bron referenties
+  2_filteren.py        -> scopefilter op basis van keywords en food-link
+  3_prioriteren.py     -> rule-based scoring (PESTLE + policy/market markers)
+  3.5_cluster.py       -> cross-bron clustering op entiteit + tijd + brontype
+  4_select_shortlist.py-> shortlist met recency, source diversity en cluster-boost
+  5_analyse_llm.py     -> LLM-duiding op shortlist of cluster
+  6_weekbriefing.py    -> weekly briefing-output
+
+exports/
+  html/             -> browserklare demo-HTML
+  lovable/          -> copy-paste HTML voor Lovable
+  runbooks/         -> runvolgorde en migratie-instructies
+
+legacy/
+  oude pipeline- en artefactbestanden, bewaard voor referentie
 ```
 
-## Eerste run
+## Runvolgorde
+
+### Machine-run
 
 ```bash
-pip install pyyaml openai
 python3 pipeline/1_ophalen.py
+python3 pipeline/1.5_dedupe.py
 python3 pipeline/2_filteren.py
 python3 pipeline/3_prioriteren.py
-python3 pipeline/4_synthese.py   # vereist OPENAI_API_KEY
+python3 pipeline/3.5_cluster.py
+python3 pipeline/4_select_shortlist.py
 ```
 
-## Interactief
+### Met LLM-duiding erbij
 
 ```bash
-python3 agent/agent.py "Wat weet je over EFSA deze week?"
-python3 agent/agent.py "Vergelijk dit met vorige maand"
-python3 agent/agent.py "Wat betekent dit voor mijn dossier Novel Food?"
+python3 pipeline/5_analyse_llm.py
+python3 pipeline/6_weekbriefing.py
 ```
 
-## Cron (dagelijks 06:00)
+## Waar zit de intelligentie?
 
-```
-0 6 * * * /home/brewuser/projects/biotech-radar/cron.sh
-```
+De intelligentie zit in lagen:
+1. **Bronkeuze** — welke bronnen mogen de radar voeden
+2. **Scope** — welke keywords, food-link en uitsluitingen bepalen wat relevant is
+3. **Rule-based scoring** — welke signalen meer gewicht krijgen
+4. **Cross-bron clustering** — wat begint samen te komen over meerdere bronnen en tijd
+5. **LLM-duiding** — welk patroon of welke beleidsimplicatie zit in de shortlist of cluster
 
-## Bronprotocol
+## Demo-assets
 
-Zie `~/.openclaw/workspace/RADAR.md` — Tier 1 eerst, geen rijksoverheid als primaire bron.
+Kijk in:
+- `exports/html/`
+- `exports/lovable/`
+- `exports/runbooks/`
+
+## Belangrijke notitie
+
+Deze repo is bewust portable opgebouwd onder:
+`/home/brewuser/projects/biotech-radar`
+
+Dus niet verweven met de main OpenClaw-workspace. Dat maakt migratie naar GitHub, Lovable of een andere server veel eenvoudiger.
