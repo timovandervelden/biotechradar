@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Biotech Radar — Methodologie & Validatie</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#f7f8fa;color:#1a1a2e;line-height:1.6}
+header{background:#1a1a2e;color:white;padding:24px 40px}
+header h1{font-size:22px;font-weight:700;margin-bottom:4px}
+header p{font-size:13px;opacity:.7}
+.container{max-width:960px;margin:0 auto;padding:32px 24px}
+h2{font-size:17px;font-weight:700;margin:32px 0 12px;color:#1a1a2e;border-left:4px solid #1a1a2e;padding-left:12px}
+h3{font-size:14px;font-weight:600;margin:18px 0 8px;color:#333}
+p{font-size:13px;color:#444;margin-bottom:10px}
+.card{background:white;border-radius:10px;padding:20px 24px;margin-bottom:16px;box-shadow:0 1px 4px rgba(0,0,0,.07)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.stat{background:white;border-radius:8px;padding:14px 18px;text-align:center;box-shadow:0 1px 3px rgba(0,0,0,.07)}
+.stat .n{font-size:28px;font-weight:700;color:#1a1a2e}
+.stat .l{font-size:11px;color:#888;margin-top:2px}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th{background:#f0f2f5;padding:8px 12px;text-align:left;font-weight:600;font-size:12px;color:#555;border-bottom:2px solid #e0e0e0}
+td{padding:8px 12px;border-bottom:1px solid #f0f0f0}
+tr:last-child td{border:none}
+.tag{display:inline-block;padding:2px 8px;border-radius:12px;font-size:11px;font-weight:600;margin:2px 2px 2px 0}
+.high{background:#d4edda;color:#155724}
+.medium{background:#fff3cd;color:#856404}
+.low{background:#f8f9fa;color:#666}
+.change{background:#cce5ff;color:#004085}
+.exclude{background:#f8d7da;color:#721c24}
+.src1{background:#e8f4e8;color:#1a6b1a}
+.src2{background:#fff3e0;color:#7a4a00}
+.signal-card{background:white;border-radius:8px;padding:16px 20px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.07);border-left:4px solid #1a6b1a}
+.signal-card.score-high{border-left-color:#155724}
+.signal-card.score-mid{border-left-color:#856404}
+.signal-score{font-size:22px;font-weight:700;color:#155724;float:right;margin-top:-2px}
+.signal-title{font-size:14px;font-weight:600;margin-bottom:3px}
+.signal-title a{color:#0066cc;text-decoration:none}
+.signal-meta{font-size:11px;color:#888;margin-bottom:6px}
+.signal-text{font-size:12px;color:#555;line-height:1.5}
+.pestle-row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.pestle-item{font-size:11px;padding:2px 7px;border-radius:8px;background:#f0f4ff;color:#334}
+.step{background:white;border-radius:8px;padding:14px 18px;margin-bottom:10px;box-shadow:0 1px 3px rgba(0,0,0,.07);display:flex;gap:14px;align-items:flex-start}
+.step-num{background:#1a1a2e;color:white;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;flex-shrink:0;margin-top:2px}
+.step-content h4{font-size:13px;font-weight:600;margin-bottom:3px}
+.step-content p{font-size:12px;color:#555;margin:0}
+.disclaimer{background:#fff8e1;border:1px solid #ffe082;border-radius:8px;padding:14px 18px;font-size:12px;color:#555;margin-top:24px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🧬 Biotech Radar — Methodologie & Validatiedocument</h1>
+  <p>Gegenereerd op 2026-03-18 · Voor domeinvalidatie van scope, prioritering en conclusies</p>
+</header>
+<div class="container">
+
+<div class="grid3" style="margin-bottom:24px">
+  <div class="stat"><div class="n">275</div><div class="l">Totaal opgehaalde signalen</div></div>
+  <div class="stat"><div class="n" style="color:#1a6b1a">49</div><div class="l">Relevant na filter</div></div>
+  <div class="stat"><div class="n">144</div><div class="l">Full-text geanalyseerd</div></div>
+</div>
+
+<h2>1. Scope & Missie</h2>
+<div class="card">
+  <h3>Wat monitort deze radar?</h3>
+  <p>Ontwikkelingen in <strong>groene biotech</strong> die impact gaan hebben op de <strong>Nederlandse voedseltransitie</strong> — specifiek gericht op de verwerkende voedselsector, opschaling van precision fermentation, en marktintroductie van alternatieve eiwitten.</p>
+  <p><strong>Uitgangspunt:</strong> Signalen <em>buiten</em> het zichtsveld van overheidsmensen. Bekende beleidsdocumenten (rijksoverheid.nl, kamerbrief, etc.) worden bewust uitgesloten als primaire bron.</p>
+  <p><strong>Niet in scope:</strong> Rode biotech (farma, medisch), witte biotech zonder food-link, bekende NL overheidsplannen.</p>
+</div>
+<h2>2. Databronnen</h2><div class="grid2"><div class="card"><h3>📡 RSS Feeds (automatisch, continu)</h3><table><thead><tr><th>Bron</th><th>Focus</th><th>Tier</th></tr></thead><tbody><tr><td><strong>Vegconomist — Fermentation</strong></td><td><a href="https://vegconomist.com/feed/" target="_blank" style="color:#0066cc;font-size:11px">https://vegconomist.com/feed/...</a></td><td><span class="tag src1">T1</span></td></tr><tr><td><strong>Protein Trends NL</strong></td><td><a href="https://protein-trends.com/feed/" target="_blank" style="color:#0066cc;font-size:11px">https://protein-trends.com/feed/...</a></td><td><span class="tag src1">T1</span></td></tr><tr><td><strong>GFI (Good Food Institute)</strong></td><td><a href="https://gfi.org/feed/" target="_blank" style="color:#0066cc;font-size:11px">https://gfi.org/feed/...</a></td><td><span class="tag src1">T1</span></td></tr><tr><td><strong>Eiwittrends NL</strong></td><td><a href="https://www.eiwittrends.nl/feed/" target="_blank" style="color:#0066cc;font-size:11px">https://www.eiwittrends.nl/feed/...</a></td><td><span class="tag src2">T2</span></td></tr><tr><td><strong>BioPharma Trend</strong></td><td><a href="https://www.biopharmatrend.com/rss/" target="_blank" style="color:#0066cc;font-size:11px">https://www.biopharmatrend.com/rss/...</a></td><td><span class="tag src1">T1</span></td></tr><tr><td><strong>HollandBIO</strong></td><td><a href="https://www.hollandbio.nl/feed/" target="_blank" style="color:#0066cc;font-size:11px">https://www.hollandbio.nl/feed/...</a></td><td><span class="tag src2">T2</span></td></tr><tr><td><strong>VentureCapital.nl</strong></td><td><a href="https://venturecapital.nl/feed/" target="_blank" style="color:#0066cc;font-size:11px">https://venturecapital.nl/feed/...</a></td><td><span class="tag src2">T2</span></td></tr><tr><td><strong>PubMed - precision fermentation</strong></td><td><a href="https://pubmed.ncbi.nlm.nih.gov/rss/search/?term=precision+fermentation+food&format=abstract&limit=10" target="_blank" style="color:#0066cc;font-size:11px">https://pubmed.ncbi.nlm.nih.gov/rss/search/?t...</a></td><td><span class="tag src1">T1</span></td></tr><tr><td><strong>PubMed - alternative protein Netherlands</strong></td><td><a href="https://pubmed.ncbi.nlm.nih.gov/rss/search/?term=alternative+protein+Netherlands&format=abstract&limit=10" target="_blank" style="color:#0066cc;font-size:11px">https://pubmed.ncbi.nlm.nih.gov/rss/search/?t...</a></td><td><span class="tag src1">T1</span></td></tr></tbody></table></div><div class="card"><h3>🔍 Brave Search Queries (gericht zoeken)</h3><table><thead><tr><th>Zoekopdracht</th><th>Tier</th></tr></thead><tbody><tr><td style="font-family:monospace;font-size:11px">precision fermentation Netherlands scale-up food 2026</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">EFSA Novel Food approval precision fermentation alternative protein 2026</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">new genomic techniques NGT food Netherlands EU regulation 2026</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">eiwittransitie sustainable protein opschaling Nederland 2026</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">cellular agriculture cultivated protein food Netherlands 2026</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">biobased food ingredients fermentation Netherlands scale-up</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">novel protein alternative protein Europe market launch 2026</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">reststromen biobased verwerking voedselsector Nederland 2026</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">BFF Biotechnology Fermentation Factory Ede Netherlands 2026</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">voedseltransitie food transition policy Netherlands EU 2026</td><td><span class="tag src1">T1</span></td></tr><tr><td style="font-family:monospace;font-size:11px">Nationaal Groeifonds cellular agriculture food Netherlands</td><td><span class="tag src2">T2</span></td></tr><tr><td style="font-family:monospace;font-size:11px">FoodValley Netherlands food innovation alternative protein 2026</td><td><span class="tag src2">T2</span></td></tr><tr><td style="font-family:monospace;font-size:11px">Wageningen University food biotech fermentation innovation 2026</td><td><span class="tag src2">T2</span></td></tr></tbody></table></div></div><h2>3. Keyword Taxonomie & Filtering</h2><div class="card"><h3>🟢 High-priority keywords (directe match = relevant)</h3><p><span class="tag high">precision fermentation</span><span class="tag high">voedseltransitie</span><span class="tag high">eiwittransitie</span><span class="tag high">novel protein</span><span class="tag high">NGT</span><span class="tag high">new genomic techniques</span><span class="tag high">cellular agriculture</span><span class="tag high">EFSA</span><span class="tag high">Novel Food</span><span class="tag high">biobased economy</span><span class="tag high">sustainable protein</span><span class="tag high">plant protein</span><span class="tag high">alternative protein</span><span class="tag high">reststromen</span></p><h3 style="margin-top:14px">🟡 Medium keywords</h3><p><span class="tag medium">biomanufacturing</span><span class="tag medium">fermentation</span><span class="tag medium">biobased</span><span class="tag medium">scale-up</span><span class="tag medium">Groeifonds</span><span class="tag medium">verwerkende industrie</span><span class="tag medium">food tech</span><span class="tag medium">plant biotechnology</span><span class="tag medium">groene biotech</span><span class="tag medium">circulaire verwerking</span></p><h3 style="margin-top:14px">🔵 Vroeg-signaal keywords (change signals)</h3><p><span class="tag change">first in EU</span><span class="tag change">first in europe</span><span class="tag change">precedent</span><span class="tag change">paves way</span><span class="tag change">ahead of regulation</span><span class="tag change">before approval</span><span class="tag change">pre-approval</span><span class="tag change">pre-commercial</span><span class="tag change">pilot program</span><span class="tag change">regulatory sandbox</span><span class="tag change">tasting event</span><span class="tag change">consumer trial</span><span class="tag change">breakthrough</span><span class="tag change">game changer</span><span class="tag change">paradigm shift</span></p><h3 style="margin-top:14px">🔴 Uitsluitingslijst (altijd gefilterd)</h3><p><span class="tag exclude">oncology</span><span class="tag exclude">cancer therapy</span><span class="tag exclude">cardiovascular</span><span class="tag exclude">rare disease</span><span class="tag exclude">drug discovery</span><span class="tag exclude">pharmaceutical</span><span class="tag exclude">weesgeneesmiddelen</span><span class="tag exclude">geneesmiddelen</span><span class="tag exclude">farmawetgeving</span><span class="tag exclude">medicijn</span><span class="tag exclude">klinische trial</span><span class="tag exclude">medische behandeling</span><span class="tag exclude">patiënt</span><span class="tag exclude">hospital</span><span class="tag exclude">therapeutics</span><span class="tag exclude">drug development</span><span class="tag exclude">clinical trial</span><span class="tag exclude">FDA approval</span><span class="tag exclude">EMA approval</span><span class="tag exclude">brain implant</span><span class="tag exclude">spinal cord</span><span class="tag exclude">neuroscience</span><span class="tag exclude">dialysis</span><span class="tag exclude">kidney disease</span><span class="tag exclude">islet therapy</span><span class="tag exclude">insulin</span><span class="tag exclude">immunotherapy</span><span class="tag exclude">inhaler</span><span class="tag exclude">transplant</span><span class="tag exclude">layoff tracker</span><span class="tag exclude">bezuinigingen</span><span class="tag exclude">senator blasts</span><span class="tag exclude">TrumpRx</span><span class="tag exclude">stock price</span><span class="tag exclude">sinks stock</span><span class="tag exclude">phase 3 failure</span><span class="tag exclude">antibody therapy</span></p></div>
+<h2>4. Prioriteringsmethode (PESTLE-rubric)</h2>
+<div class="card">
+  <p>Elk relevant signaal krijgt een score op basis van het aantal keyword-hits per PESTLE-categorie, gewogen naar beleidsrelevantie:</p>
+  <table style="margin-top:10px">
+    <thead><tr><th>Categorie</th><th>Weging</th><th>Rationale</th><th>Voorbeeldwoorden</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Policy</strong></td><td>35%</td><td>Regelgeving is de directe bottleneck voor opschaling</td><td>EFSA, Novel Food, NGT, approval, beleid</td></tr>
+      <tr><td><strong>Economic</strong></td><td>30%</td><td>Financieringskloof bepaalt of NL-bedrijven blijven</td><td>funding, scale-up, investering, markt</td></tr>
+      <tr><td><strong>Social</strong></td><td>20%</td><td>Consumentenacceptatie bepaalt politieke bereidheid</td><td>voedseltransitie, consument, acceptatie</td></tr>
+      <tr><td><strong>Technology</strong></td><td>25%</td><td>Tech-doorbraken zijn vroege signalen voor beleid</td><td>precision fermentation, cellular ag, NGT</td></tr>
+      <tr><td><strong>Environmental</strong></td><td>5%</td><td>Duurzaamheid is randvoorwaarde, geen driver</td><td>circulair, CO2, reststromen</td></tr>
+      <tr style="background:#f0f8ff"><td><strong>Policy_early ⭐</strong></td><td>40%</td><td><em>Bonus</em>: beleidsprecedenten & regelvrije experimenten</td><td>first in EU, paves way, pre-approval, tasting event</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:10px;font-size:12px;color:#666"><strong>Formule:</strong> Score = Σ(hits per categorie × weging). Full-text scoort zwaarder dan RSS-snippet.</p>
+</div>
+
+<h2>5. Hoe werkt de pipeline</h2>
+<div class="step"><div class="step-num">1</div><div class="step-content"><h4>1_ophalen.py — Data verzamelen</h4><p>RSS feeds ophalen (continu stroom) + Brave Search queries (gericht zoeken op specifieke thema's). Samen: 275 signalen opgehaald.</p></div></div><div class="step"><div class="step-num">2</div><div class="step-content"><h4>1b_verrijken.py — Full-text ophalen</h4><p>Voor relevante signalen wordt de volledige artikeltekst opgehaald via web-scraping. 144 van de 49 relevante signalen zijn op full-text gescoord — veel nauwkeuriger dan RSS-snippet.</p></div></div><div class="step"><div class="step-num">3</div><div class="step-content"><h4>2_filteren.py — Ruis verwijderen</h4><p>Keyword-filter: signaal moet matchen op high/medium keywords OF een change-signal bevatten. Farma, medisch, en bekende overheidsplannen worden uitgesloten. Resultaat: 49 van 275 signalen door de filter.</p></div></div><div class="step"><div class="step-num">4</div><div class="step-content"><h4>3_prioriteren.py — PESTLE-scoring</h4><p>Elk relevant signaal krijgt een gewogen score op basis van PESTLE-categorieën. Vroeg-signaal keywords (first in EU, pre-approval, etc.) krijgen een bonus van 40%.</p></div></div><div class="step"><div class="step-num">5</div><div class="step-content"><h4>4_synthese.py — Duiding schrijven</h4><p>Top-signalen worden omgezet naar een briefing met: wat is het signaal, waarom relevant voor voedseltransitie, en welke beleids/strategische vraag roept het op.</p></div></div><h2>6. Top Signalen — Onderbouwing per artikel</h2><p style="margin-bottom:14px;font-size:13px">De {relevant} relevante signalen, gesorteerd op PESTLE-score. Voor elk artikel: werkelijke bron, score, en de tekstpassages die de score bepalen.</p><div class="signal-card score-high">
+  <div class="signal-score">3.65</div>
+  <div class="signal-title"><a href="https://www.greenqueen.com.hk/precision-fermentation-netherlands-food-tasting-approval/" target="_blank">Dutch Govt Paves Way for Pre-Approval Tastings of Precison-Fermented Foods</a></div>
+  <div class="signal-meta">Bron: BioPharma Trend · Werkelijke URL: <a href="https://www.greenqueen.com.hk/precision-fermentation-netherlands-food-tasting-approval/" target="_blank" style="color:#0066cc">https://www.greenqueen.com.hk/precision-fermentation-netherlands-food-</a> · Full-text</div>
+  <div class="pestle-row"><span class='pestle-item'>Novel Food (Policy)</span> <span class='pestle-item'>approval (Policy)</span> <span class='pestle-item'>funding (Economic)</span> <span class='pestle-item'>consumer (Social)</span> <span class='pestle-item'>precision fermentation (Technology)</span> <span class='pestle-item'>fermentation (Technology)</span> <span class='pestle-item'>cellular agriculture (Technology)</span> <span class='pestle-item'>cultivated (Technology)</span> <span class='pestle-item'>paves way (Policy_early)</span> <span class='pestle-item'>pre-approval (Policy_early)</span></div>
+</div><div class="signal-card score-high">
+  <div class="signal-score">3.4</div>
+  <div class="signal-title"><a href="https://www.eiwittrends.nl/evenementen-eiwittransitie/" target="_blank">Evenementen over eiwittransitie: noteer in je agenda</a></div>
+  <div class="signal-meta">Bron: Eiwittrends NL · Werkelijke URL: <a href="https://www.eiwittrends.nl/evenementen-eiwittransitie/" target="_blank" style="color:#0066cc">https://www.eiwittrends.nl/evenementen-eiwittransitie/</a> · Full-text</div>
+  <div class="pestle-row"><span class='pestle-item'>NGT (Policy)</span> <span class='pestle-item'>beleid (Policy)</span> <span class='pestle-item'>scale-up (Economic)</span> <span class='pestle-item'>markt (Economic)</span> <span class='pestle-item'>opschaling (Economic)</span> <span class='pestle-item'>acceptatie (Social)</span> <span class='pestle-item'>eiwittransitie (Social)</span> <span class='pestle-item'>gezondheid (Social)</span> <span class='pestle-item'>plant protein (Technology)</span></div>
+</div><div class="signal-card score-high">
+  <div class="signal-score">2.25</div>
+  <div class="signal-title"><a href="https://vegconomist.com/investments-finance/verley-secures-38-million-series-a-to-commercialize-precision-fermented-dairy-proteins/" target="_blank">Verley Secures $38 Million Series A to Commercialize Precision-Fermented Dairy Proteins</a></div>
+  <div class="signal-meta">Bron: Vegconomist — Fermentation · Werkelijke URL: <a href="https://vegconomist.com/investments-finance/verley-secures-38-million-series-a-to-commercialize-precision-fermented-dairy-proteins/" target="_blank" style="color:#0066cc">https://vegconomist.com/investments-finance/verley-secures-38-million-</a> · Full-text</div>
+  <div class="pestle-row"><span class='pestle-item'>regulation (Policy)</span> <span class='pestle-item'>approval (Policy)</span> <span class='pestle-item'>funding (Economic)</span> <span class='pestle-item'>series (Economic)</span> <span class='pestle-item'>consumer (Social)</span> <span class='pestle-item'>precision fermentation (Technology)</span> <span class='pestle-item'>fermentation (Technology)</span> <span class='pestle-item'>cultivated (Technology)</span></div>
+</div><div class="signal-card score-high">
+  <div class="signal-score">2.25</div>
+  <div class="signal-title"><a href="https://ioplus.nl/en/posts/netherlands-invests-in-future-of-food-with-two-cellular-agriculture-facilities" target="_blank">Netherlands invests in future of food with two cellular agriculture facilities</a></div>
+  <div class="signal-meta">Bron: Brave - precision fermentation NL scale-up · Werkelijke URL: <a href="https://ioplus.nl/en/posts/netherlands-invests-in-future-of-food-with-two-cellular-agriculture-facilities" target="_blank" style="color:#0066cc">https://ioplus.nl/en/posts/netherlands-invests-in-future-of-food-with-</a> · Full-text</div>
+  <div class="pestle-row"><span class='pestle-item'>NGT (Policy)</span> <span class='pestle-item'>approval (Policy)</span> <span class='pestle-item'>scale-up (Economic)</span> <span class='pestle-item'>precision fermentation (Technology)</span> <span class='pestle-item'>fermentation (Technology)</span> <span class='pestle-item'>cellular agriculture (Technology)</span> <span class='pestle-item'>cultivated (Technology)</span></div>
+</div><div class="signal-card score-high">
+  <div class="signal-score">2.2</div>
+  <div class="signal-title"><a href="https://vegconomist.com/category/fermentation/" target="_blank">Fermentation: Latest News 2026 - vegconomist: the vegan business magazine</a></div>
+  <div class="signal-meta">Bron: BioPharma Trend · Werkelijke URL: <a href="https://vegconomist.com/category/fermentation/" target="_blank" style="color:#0066cc">https://vegconomist.com/category/fermentation/</a> · Full-text</div>
+  <div class="pestle-row"><span class='pestle-item'>NGT (Policy)</span> <span class='pestle-item'>funding (Economic)</span> <span class='pestle-item'>series (Economic)</span> <span class='pestle-item'>consumer (Social)</span> <span class='pestle-item'>precision fermentation (Technology)</span> <span class='pestle-item'>fermentation (Technology)</span> <span class='pestle-item'>biobased (Technology)</span></div>
+</div><div class="signal-card score-mid">
+  <div class="signal-score">1.8</div>
+  <div class="signal-title"><a href="https://vegconomist.com/ingredients/vivici-debuts-precision-fermented-lactoferrin-in-the-us-market/" target="_blank">Vivici Debuts Precision-Fermented Lactoferrin in the US Market</a></div>
+  <div class="signal-meta">Bron: Vegconomist — Fermentation · Werkelijke URL: <a href="https://vegconomist.com/ingredients/vivici-debuts-precision-fermented-lactoferrin-in-the-us-market/" target="_blank" style="color:#0066cc">https://vegconomist.com/ingredients/vivici-debuts-precision-fermented-</a> · Full-text</div>
+  <div class="pestle-row"><span class='pestle-item'>NGT (Policy)</span> <span class='pestle-item'>consumer (Social)</span> <span class='pestle-item'>precision fermentation (Technology)</span> <span class='pestle-item'>fermentation (Technology)</span> <span class='pestle-item'>cellular agriculture (Technology)</span> <span class='pestle-item'>cultivated (Technology)</span></div>
+</div><div class="signal-card score-mid">
+  <div class="signal-score">1.7</div>
+  <div class="signal-title"><a href="https://www.eiwittrends.nl/met-karin-lowik-aan-het-roer-zet-rival-foods-koers-naar-de-markt/" target="_blank">Met Karin Löwik aan het roer zet Rival Foods koers naar de markt</a></div>
+  <div class="signal-meta">Bron: Eiwittrends NL · Werkelijke URL: <a href="https://www.eiwittrends.nl/met-karin-lowik-aan-het-roer-zet-rival-foods-koers-naar-de-markt/" target="_blank" style="color:#0066cc">https://www.eiwittrends.nl/met-karin-lowik-aan-het-roer-zet-rival-food</a> · Full-text</div>
+  <div class="pestle-row"><span class='pestle-item'>NGT (Policy)</span> <span class='pestle-item'>scale-up (Economic)</span> <span class='pestle-item'>markt (Economic)</span> <span class='pestle-item'>commercialisatie (Economic)</span> <span class='pestle-item'>consument (Social)</span></div>
+</div><div class="signal-card score-mid">
+  <div class="signal-score">1.65</div>
+  <div class="signal-title"><a href="https://www.nizo.com/news/biotechnology-fermentation-factory-bff-gives-first-look-at-the-future-of-precisionfermentation-in-the-netherlands/" target="_blank">Biotechnology Fermentation Factory (BFF) Gives First Look at the Future of (Precision)Ferm</a></div>
+  <div class="signal-meta">Bron: BioPharma Trend · Werkelijke URL: <a href="https://www.nizo.com/news/biotechnology-fermentation-factory-bff-gives-first-look-at-the-future-of-precisionfermentation-in-the-netherlands/" target="_blank" style="color:#0066cc">https://www.nizo.com/news/biotechnology-fermentation-factory-bff-gives</a> · Full-text</div>
+  <div class="pestle-row"><span class='pestle-item'>NGT (Policy)</span> <span class='pestle-item'>scale-up (Economic)</span> <span class='pestle-item'>precision fermentation (Technology)</span> <span class='pestle-item'>fermentation (Technology)</span> <span class='pestle-item'>cellular agriculture (Technology)</span></div>
+</div><div class="signal-card score-mid">
+  <div class="signal-score">1.65</div>
+  <div class="signal-title"><a href="https://gfi.org/blog/reimagining-protein-for-a-future-under-pressure/" target="_blank">Reimagining protein for a future under pressure</a></div>
+  <div class="signal-meta">Bron: GFI (Good Food Institute) · Werkelijke URL: <a href="https://gfi.org/blog/reimagining-protein-for-a-future-under-pressure/" target="_blank" style="color:#0066cc">https://gfi.org/blog/reimagining-protein-for-a-future-under-pressure/</a> · Full-text</div>
+  <div class="pestle-row"><span class='pestle-item'>NGT (Policy)</span> <span class='pestle-item'>fermentation (Technology)</span> <span class='pestle-item'>alternative protein (Technology)</span> <span class='pestle-item'>cultivated (Technology)</span></div>
+</div>
+<h2>7. Hoe zijn de briefing-conclusies tot stand gekomen</h2>
+<div class="card">
+  <h3>Overkoepelend patroon</h3>
+  <p>De top-signalen zijn niet willekeurig geselecteerd maar volgen uit drie overeenkomsten in de data:</p>
+  <ol style="margin-left:18px;font-size:13px;color:#444">
+    <li style="margin-bottom:8px"><strong>NL als Europa-eerste:</strong> Pre-approval tastings (score 3.65) en twee open-access faciliteiten plaatsen NL structureel voor op EU-niveau. Dit is geen beleidskeuze maar een marktpositie.</li>
+    <li style="margin-bottom:8px"><strong>Commercialisatie omzeilt EU:</strong> Vivici lanceert in VS (score 1.80), Verley haalt 8M op in Europa (score 2.25). Beide signaleren dat de EU-markt te traag is — bedrijven wachten niet op EFSA.</li>
+    <li style="margin-bottom:8px"><strong>Vraagkant stagneert:</strong> Eiwitmonitor 2025 (39%, geen beweging) + AH Kleintje-analyse tonen dat aanbod-infrastructuur klaar is maar consumentengedrag niet volgt.</li>
+  </ol>
+  <p style="margin-top:10px"><strong>Conclusie:</strong> De beleidskloof is niet meer technisch of financieel — het is een gedrag-regulering-markt driehoek die niet in lijn loopt.</p>
+</div>
+
+<div class="disclaimer">
+  <strong>⚠️ Validatieverzoek</strong><br>
+  Deze briefing is algoritmisch gegenereerd op basis van keyword-scoring en full-text analyse. De rubric (PESTLE-weging, keyword-selectie) is een eerste versie. Domeinvalidatie gevraagd op:<br>
+  1. Is de keyword-selectie volledig voor jouw domein?<br>
+  2. Ontbreken er bronnen die relevante signalen leveren?<br>
+  3. Klopt de PESTLE-weging voor beleidsmakers in de voedseltransitie?<br>
+  4. Zijn de overkoepelende conclusies in lijn met wat je in het veld ziet?
+</div>
+
+<h2>8. Missie & Lens (MISSION.md)</h2>
+<div class="card">
+  <h3>Wat stuurt de agent aan?</h3>
+  <p><strong>Missie:</strong> Ontwikkelingen in groene biotech in kaart brengen, ordenen en prioriteren die impact gaan hebben op de Nederlandse voedseltransitie — en die koppelbaar zijn aan concrete beleidskeuzes.</p>
+  <p><strong>Perspectief:</strong> Scout, niet analist. Zoek wat nog <em>niet</em> gezien wordt door overheidsmensen: internationale ontwikkelingen die NL nog niet heeft opgepikt, startup-bewegingen vóór persberichten, beleidsverschuivingen in Brussel/Berlijn met NL-impact, technologische doorbraken die regelgeving achterhaald maken.</p>
+  <h3 style="margin-top:12px">Relevantie-filter</h3>
+  <p>Een signaal telt als het:</p>
+  <ul style="margin-left:18px;font-size:13px;color:#444">
+    <li>Impact heeft op de opschaalbaarheidsgap (pilot → markt)</li>
+    <li>Raakvlak heeft met groene biotech (precision fermentation, cultivated, biobased food)</li>
+    <li>Buiten het zichtsveld van standaard overheidscommunicatie valt</li>
+    <li>Bijdraagt aan nieuwe inzichten voor politieke of beleidskeuzes</li>
+  </ul>
+  <h3 style="margin-top:12px">Tijdshorizon</h3>
+  <p>Signalen worden gemonitord over een horizon van <strong>2 jaar</strong> (operationeel) tot <strong>20 jaar</strong> (structureel). Alle signalen vanaf januari 2025 zijn in scope.</p>
+</div>
+
+<h2>9. Bronnen buiten de huidige monitoring</h2>
+<div class="card">
+  <p>De volgende bronnen staan in RADAR.md maar zijn nog niet actief als RSS-feed. Dit zijn blinde vlekken in de huidige monitoring:</p>
+  <table>
+    <thead><tr><th>Bron</th><th>Reden niet actief</th><th>Aanbeveling</th></tr></thead>
+    <tbody>
+      <tr><td>proteinproductiontechnology.com</td><td>RSS 404 (broken feed)</td><td>Brave Search query als alternatief</td></tr>
+      <tr><td>foodnavigator.com</td><td>RSS 404 voor alt-protein topic</td><td>Brave Search of directe scraping</td></tr>
+      <tr><td>new-harvest.org</td><td>RSS 404</td><td>Maandelijkse handmatige check</td></tr>
+      <tr><td>Google Alerts</td><td>URLs nog niet ingesteld (PLACEHOLDER)</td><td>Handmatig aanmaken via google.com/alerts</td></tr>
+      <tr><td>LinkedIn practitioners</td><td>Geen API/RSS</td><td>Handmatige scan buiten pipeline</td></tr>
+      <tr><td>arxiv.org (NL biotech papers)</td><td>PubMed feed actief, arxiv niet</td><td>PubMed dekt dit gedeeltelijk</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<h2>10. Bekende overheidsplannen (bewust uitgesloten)</h2>
+<div class="card">
+  <p>De volgende beleidsdocumenten zijn bewust <strong>niet</strong> opgenomen als primaire bron — ambtenaren kennen deze al:</p>
+  <ul style="margin-left:18px;font-size:13px;color:#444">
+    <li>Taskforce Toekomstige Welvaart & Verdienvermogen (kabinet-Jetten)</li>
+    <li>Nationaal Groeifonds toekenningen biotech</li>
+    <li>Kamerbrieven over biotech/voedseltransitie</li>
+    <li>RVO-subsidie-instrumenten (WBSO, MIT, Biotech Booster)</li>
+    <li>Rijksoverheid.nl beleidspagina's</li>
+  </ul>
+  <p style="margin-top:8px">Deze bronnen worden alleen gebruikt voor <em>verificatie</em> wanneer een signaal de overheidspositie raakt.</p>
+</div>
+
+<h2>11. Cumulatieve bevindingen (BIOTECH.md)</h2>
+<div class="card">
+  <h3>Eerder vastgestelde patronen (voor context bij validatie)</h3>
+  <ul style="margin-left:18px;font-size:13px;color:#444">
+    <li><strong>Leiden-cluster</strong> is de biotech hotspot #1 NL (Azafaros €132M, Leyden Labs €60M, Alesta €56M) — niet expliciet in kabinetsbeleid benoemd</li>
+    <li><strong>75% van NL biotech-funding</strong> komt uit buitenland (VS dominant) — strategische kwetsbaarheid</li>
+    <li><strong>Scale-up gap</strong>: NL heeft hoogste AI-talentdichtheid Europa maar weinig bedrijven groeien door naar €50M+</li>
+    <li><strong>BFF Ede</strong> adresseert de "missing middle" voor precision fermentation</li>
+    <li><strong>Vivici</strong> als eerste NL precision fermentation commercialisatie richting VS-markt</li>
+  </ul>
+</div>
+</div></body></html>

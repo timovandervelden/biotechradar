@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>Biotech Radar — Signalen</title>
+<style>
+  body { font-family: -apple-system, sans-serif; max-width: 1100px; margin: 0 auto; padding: 20px; background: #f8f9fa; }
+  h1 { color: #1a1a2e; }
+  .stats { background: #e8f4f8; padding: 10px 16px; border-radius: 8px; margin-bottom: 20px; font-size: 14px; }
+  table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,0.1); }
+  th { background: #1a1a2e; color: white; padding: 10px 12px; text-align: left; font-size: 13px; }
+  td { padding: 9px 12px; border-bottom: 1px solid #eee; font-size: 13px; vertical-align: top; }
+  tr:hover td { background: #f0f7ff; }
+  .score-high { color: #1a7a1a; font-weight: bold; }
+  .score-mid { color: #a06000; }
+  .score-low { color: #999; }
+  .tier1 { background: #e8f4e8; color: #1a5c1a; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+  .tier2 { background: #fff3e0; color: #7a4a00; padding: 2px 6px; border-radius: 4px; font-size: 11px; }
+  .relevant { background: #e8f4e8; }
+  .irrelevant { opacity: 0.4; }
+  a { color: #0066cc; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .snippet { color: #555; max-width: 400px; }
+  .filters { margin-bottom: 16px; display: flex; gap: 10px; flex-wrap: wrap; }
+  .filters button { padding: 6px 14px; border: 1px solid #ccc; border-radius: 20px; cursor: pointer; background: white; font-size: 13px; }
+  .filters button.active { background: #1a1a2e; color: white; border-color: #1a1a2e; }
+  input#search { padding: 8px 14px; border: 1px solid #ccc; border-radius: 20px; font-size: 14px; width: 260px; }
+</style>
+</head>
+<body>
+<h1>🧬 Biotech Radar — Signalen</h1>
+<div class="stats">Totaal: <strong>109</strong> signalen &nbsp;|&nbsp; Relevant: <strong>35</strong> &nbsp;|&nbsp; Gefilterd: <strong>74</strong> &nbsp;|&nbsp; Gegenereerd: 2026-03-17</div>
+<div class="filters">
+  <input id="search" type="text" placeholder="Zoek in titels..." oninput="filterTable()">
+  <button class="active" onclick="showAll(this)">Alle</button>
+  <button onclick="showRelevant(this)">Alleen relevant</button>
+</div>
+<table id="signals">
+<thead><tr>
+  <th>#</th><th>Titel</th><th>Bron</th><th>Tier</th><th>Score</th><th>Samenvatting</th><th>Datum</th>
+</tr></thead>
+<tbody>
+<tr class="relevant" data-relevant="1">
+  <td>1</td>
+  <td><a href="https://www.eu-startups.com/2026/03/ternary-therapeutics-targets-undruggable-proteins-with-ai-designed-molecular-glues-raising-e4-1-million/" target="_blank">Ternary Therapeutics targets “undruggable” proteins with AI-designed molecular glues, rais</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-high">1.25</td>
+  <td class="snippet">London-based BioTech startup Ternary Therapeutics has raised €4.1 million (£3.6 million) in Seed funding to scale an AI platform designed to create a new class of medicines known a</td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>2</td>
+  <td><a href="https://www.biopharmatrend.com/post/1529-macrocyclic-peptide-startup-unnatural-products-raises-45m-series-b-after-35b-in-pharma-deals/" target="_blank">Macrocyclic Peptide Startup Unnatural Products Raises $45M Series B After $3.5B in Pharma </a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-high">0.95</td>
+  <td class="snippet">Santa Cruz-based biotech Unnatural Products, led by CEO and co-founder Cameron Pye, has secured $45 million in Series B financing led by The Venture Collective to expand its platfo</td>
+  <td>2026-03-17</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>3</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/taskforce-toekomstige-welvaart-verdienvermogen-samen-aan-de-slag-voor-biotech-en-life-sciences/" target="_blank">Taskforce Toekomstige Welvaart & Verdienvermogen: samen aan de slag voor biotech en life s</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-high">0.9</td>
+  <td class="snippet">Het nieuwe kabinet-Jetten heeft een brede Taskforce Toekomstige Welvaart &#38; Verdienvermogen opgericht, waarin meerdere ministeries samenwerken onder leiding van minister Herbert</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>4</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/werkbezoek-van-eic-president-michiel-scheffers-onderstreept-belang-van-samenwerking-in-het-bloeiende-biotech-ecosysteem/" target="_blank">Werkbezoek van EIC-president Michiel Scheffers onderstreept belang van samenwerking in het</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-mid">0.8</td>
+  <td class="snippet">Afgelopen vrijdag bracht Michiel Scheffers, president van het European Innovation Council (EIC)-board, op uitnodiging van de gemeente Leiden een werkbezoek aan het Leiden Bio Scien</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>5</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/fierce-biotech-fundraising-tracker-26" target="_blank"><a href="https://www.fiercebiotech.com/biotech/fierce-biotech-fundraising-tracker-26" href</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-mid">0.8</td>
+  <td class="snippet">The Fierce Biotech Fundraising Tracker records venture capital rounds of $50 million or more secured by biotechs.</td>
+  <td>Dec 22, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>6</td>
+  <td><a href="https://www.fiercebiotech.com/research/despite-boosted-funding-nih-still-slow-award-grants-analysis" target="_blank"><a href="https://www.fiercebiotech.com/research/despite-boosted-funding-nih-still-slow-awa</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-mid">0.75</td>
+  <td class="snippet">Though the federal government has passed a funding bill increasing the budget available for the National Institutes of Health, the biomedical research powerhouse is still lagging b</td>
+  <td>Mar 16, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>7</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/overdag-stagiair-s-avonds-biotechondernemeroverdag-stagiair-s-avonds-biotechondernemer/" target="_blank">Overdag stagiair, ’s avonds biotechondernemer</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-mid">0.55</td>
+  <td class="snippet">In de biotech werken bevlogen ondernemers die impact willen maken. Maar hoe houd je koers als de risico’s groot zijn, de financiering onzeker is en de ontwikkeling jaren duurt? We </td>
+  <td>Tue, 03 Ma</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>8</td>
+  <td><a href="https://www.biopharmatrend.com/post/1524-breakout-ventures-raises-114m-for-neuroscience-and-ai-driven-startups/" target="_blank">Breakout Ventures Raises $114M for Neuroscience and AI-driven Startups</a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-mid">0.55</td>
+  <td class="snippet">Investment firm Breakout Ventures has raised a $114 million venture fund aimed at early-stage startups working in neuroscience and developing artificial intelligence technologies f</td>
+  <td>2026-03-17</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>9</td>
+  <td><a href="https://www.eu-startups.com/2026/03/german-biotech-idel-therapeutics-lands-e9-million-to-develop-cancer-therapeutics-platform/" target="_blank">German BioTech iDEL Therapeutics lands €9 million to develop cancer therapeutics platform</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-mid">0.55</td>
+  <td class="snippet">Dortmund-based iDEL Therapeutics announced the closing of a €9 million Seed financing, to develop a pipeline of cancer therapeutics that are delivered directly into the cytosol of </td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>10</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/r1-zooms-out-stealth-775m-series-financing-advance-chronic-kidney-disease-treatment" target="_blank"><a href="https://www.fiercebiotech.com/biotech/r1-zooms-out-stealth-775m-series-financing-</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-mid">0.55</td>
+  <td class="snippet">R1 Therapeutics is debuting with an oversubscribed $77.5 million Series A financing aimed at advancing its first-in-class therapy for hyperphosphatemia in patients on dialysis with</td>
+  <td>Mar 13, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>11</td>
+  <td><a href="https://www.fiercebiotech.com/medtech/altai-capital-angles-orasure-board-seats-and-sale" target="_blank"><a href="https://www.fiercebiotech.com/medtech/altai-capital-angles-orasure-board-seats-an</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-mid">0.55</td>
+  <td class="snippet">The hedge fund published a letter to the company’s board, citing declines in OraSure’s stock price and the slowing of its core diagnostic sales.</td>
+  <td>Mar 17, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>12</td>
+  <td><a href="https://www.fiercebiotech.com/medtech/amplifon-build-vertical-hearing-aid-player-eu23b-gn-acquisition" target="_blank"><a href="https://www.fiercebiotech.com/medtech/amplifon-build-vertical-hearing-aid-player-</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-mid">0.5</td>
+  <td class="snippet">With closure expected by the end of this year, the Denmark-based GN will exit the healthcare space and will focus fully on professional and consumer audio-video gear.</td>
+  <td>Mar 16, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>13</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/shaping-the-path-ahead-for-the-biotech-innovation-climate-together-with-members/" target="_blank">Shaping the path ahead for the biotech innovation climate, together with members</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-low">0.35</td>
+  <td class="snippet">Last Thursday, hollandbio’s rocksolid innovation climate team welcomed hollandbio members to the office in The Hague. We came together to connect and explore what the current surge</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>14</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/immuteps-phase-3-failure-immunotherapy-surprises-analysts-sinks-stock" target="_blank"><a href="https://www.fiercebiotech.com/biotech/immuteps-phase-3-failure-immunotherapy-surp</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.3</td>
+  <td class="snippet">Immutep and the Australian biotech’s investors have been caught off guard by the unexpected failure of its LAG-3 candidate in a phase 3 study.</td>
+  <td>Mar 13, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>15</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/inovio-trims-team-trouble-brews-fda-rare-disease-candidate" target="_blank"><a href="https://www.fiercebiotech.com/biotech/inovio-trims-team-trouble-brews-fda-rare-di</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.3</td>
+  <td class="snippet">Inovio Pharmaceuticals has laid off staff and prioritized programs to focus on its lead rare disease candidate, which is already facing some pushback from the FDA early in its appr</td>
+  <td>Mar 13, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>16</td>
+  <td><a href="https://www.fiercebiotech.com/medtech/china-approves-first-brain-computer-interface-implant-paralyzed-patients-sector-heats" target="_blank"><a href="https://www.fiercebiotech.com/medtech/china-approves-first-brain-computer-interfa</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.3</td>
+  <td class="snippet">Developed by the Shanghai-based Neuracle Technology, the system includes implanted EEG electrodes linked to a pneumatic, robotic glove that can grasp objects.</td>
+  <td>Mar 13, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>17</td>
+  <td><a href="https://www.fiercebiotech.com/medtech/insulet-recalls-certain-omnipod-5-pumps-over-insulin-leak-risks" target="_blank"><a href="https://www.fiercebiotech.com/medtech/insulet-recalls-certain-omnipod-5-pumps-ove</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.3</td>
+  <td class="snippet">The diabetes tech company said it is aware of 18 cases of serious complications related to the under-delivery of insulin to the body, including hospitalizations. No deaths have bee</td>
+  <td>Mar 13, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>18</td>
+  <td><a href="https://www.fiercebiotech.com/sponsored/stop-asking-ai-strategy-3-questions-clinical-leaders-should-ask-instead" target="_blank"><a href="https://www.fiercebiotech.com/sponsored/stop-asking-ai-strategy-3-questions-clini</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.3</td>
+  <td class="snippet">Artificial intelligence (AI) now features prominently in boardroom and executive discussions across the life sciences industry. The attention is understandable: AI has the potentia</td>
+  <td>Mar 12, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>19</td>
+  <td><a href="https://www.fiercebiotech.com/pharma/idorsia-shares-sink-after-ceos-abrupt-departure" target="_blank"><a href="https://www.fiercebiotech.com/pharma/idorsia-shares-sink-after-ceos-abrupt-depart</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.3</td>
+  <td class="snippet">Idorsia is gearing up for another CEO change with the news that Srishti Gupta, M.D., is leaving the company. As the company commences its search for a new CEO, board chair Jean-Pau</td>
+  <td>Mar 16, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>20</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/roche-inks-nvidia-deal-bolster-ai-factory-speed-drug-and-diagnostic-development" target="_blank"><a href="https://www.fiercebiotech.com/biotech/roche-inks-nvidia-deal-bolster-ai-factory-s</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.3</td>
+  <td class="snippet">Swiss pharma Roche is staying in lockstep with Eli Lilly, expanding its AI offerings and Nvidia partnership shortly after the latter drugmaker unveiled an Nvidia supercomputer.</td>
+  <td>Mar 16, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>21</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/hitting-regulatory-roadblock-bicycle-pumps-brakes-lead-program-and-deflates-headcount-30" target="_blank"><a href="https://www.fiercebiotech.com/biotech/hitting-regulatory-roadblock-bicycle-pumps-</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.3</td>
+  <td class="snippet">Bicycle Therapeutics is letting more air out of its operations, with plans to deflate its employee count by about 30% and shelve its lead anti-cancer drug conjugate.</td>
+  <td>Mar 17, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>22</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/xaira-exec-divulges-rd-focus-how-ai-company-chasing-what-industry-hungriest" target="_blank"><a href="https://www.fiercebiotech.com/biotech/xaira-exec-divulges-rd-focus-how-ai-company</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.3</td>
+  <td class="snippet">Since raising a mind-boggling $1 billion in 2024, AI-driven Xaira Therapeutics has remained largely silent on where that money is being put to work. Last week, the company’s Chief </td>
+  <td>Mar 17, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>23</td>
+  <td><a href="https://www.statnews.com/2026/03/16/biotech-news-two-more-drugmakers-join-trumprx/?utm_campaign=rss" target="_blank">STAT+: Two more drugmakers join TrumpRx</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">Medicare delays stall breakthrough device access, ALS carriers fear research setbacks under Trump, and more biotech news</td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>24</td>
+  <td><a href="https://www.statnews.com/2026/03/17/biotech-news-senator-blasts-gsk-inhaler-practices/?utm_campaign=rss" target="_blank">STAT+: Senator blasts GSK inhaler practices, calls for reform</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">Trump adds pressure to codify MFN, a judge stalls Kennedy's changes to vaccine policy, and more biotech news</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>25</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/chutes-ladders-biontech-founders-will-depart-pioneer-new-company" target="_blank"><a href="https://www.fiercebiotech.com/biotech/chutes-ladders-biontech-founders-will-depar</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">Years after BioNTech’s CEO Uğur Şahin, M.D. and chief medical officer Özlem Türeci, M.D., spearheaded the company through the roaring commercial success of Pfizer-partnered COVID-1</td>
+  <td>Mar 12, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>26</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/sana-sees-14-month-insulin-production-transplanted-islet-therapy-single-type-1-diabetes" target="_blank"><a href="https://www.fiercebiotech.com/biotech/sana-sees-14-month-insulin-production-trans</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">In a 14-month follow-up, Sana Biotechnology has found that its investigational allogeneic cell therapy continued to produce insulin for one patient with Type 1 diabetes, with no sa</td>
+  <td>Mar 13, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>27</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/structure-touts-16-weight-loss-aleniglipron-highest-efficacy-oral-glp-1" target="_blank"><a href="https://www.fiercebiotech.com/biotech/structure-touts-16-weight-loss-aleniglipron</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">Structure Therapeutics has touted the 16% weight loss seen by aleniglipron as the best results yet for an oral GLP-1 drug, as the obesity biotech readies the candidate for phase 3.</td>
+  <td>Mar 16, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>28</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/astellas-ends-16-billion-t-cell-engager-discovery-pact-cytomx" target="_blank"><a href="https://www.fiercebiotech.com/biotech/astellas-ends-16-billion-t-cell-engager-dis</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">Astellas is pulling out of its $1.6 billion biobucks partnership with CytomX six years after the two companies set out to explore T-cell-engaging bispecifics for the treatment of s</td>
+  <td>Mar 16, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>29</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/biovie-plans-20m-ipo-spinout-tasked-developing-liver-disease-drug" target="_blank"><a href="https://www.fiercebiotech.com/biotech/biovie-plans-20m-ipo-spinout-tasked-develop</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">BioVie is eyeing a $19.7 million IPO for a spinout focused on bringing a new formulation of an approved low blood pressure drug to market as a potential treatment for liver disease</td>
+  <td>Mar 17, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>30</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/fierce-biotech-layoff-tracker-2026" target="_blank"><a href="https://www.fiercebiotech.com/biotech/fierce-biotech-layoff-tracker-2026" hreflan</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">As always, if you know of layoffs occurring at a biotech, please reach out to the Fierce Biotech editorial team.</td>
+  <td>Dec 23, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>31</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/pfizers-hotly-tipped-breast-cancer-prospect-delivers-phase-2-win" target="_blank"><a href="https://www.fiercebiotech.com/biotech/pfizers-hotly-tipped-breast-cancer-prospect</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">A phase 2 study of Pfizer’s atirmociclib has hit its primary endpoint, providing evidence that the CDK4 inhibitor improves progression-free survival in second-line metastatic breas</td>
+  <td>Mar 17, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>32</td>
+  <td><a href="https://www.fiercebiotech.com/medtech/alcon-lensar-drop-356m-acquisition-deal-after-black-eye-ftc" target="_blank"><a href="https://www.fiercebiotech.com/medtech/alcon-lensar-drop-356m-acquisition-deal-aft</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">The FTC threatened to challenge the deal that would have seen Alcon acquire Lensar’s robotic laser systems for cataract surgery.</td>
+  <td>Mar 17, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>33</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/fda-rejects-aldeyra-dry-eye-disease-drug-citing-inconsistent-study-findings" target="_blank"><a href="https://www.fiercebiotech.com/biotech/fda-rejects-aldeyra-dry-eye-disease-drug-ci</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">After delaying its review, the FDA has rejected Aldeyra Therapeutics’ experimental dry eye disease treatment for the third time.</td>
+  <td>Mar 17, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>34</td>
+  <td><a href="https://www.fiercebiotech.com/biotech/jlabs-cant-make-it-anywhere-exit-new-york-location" target="_blank"><a href="https://www.fiercebiotech.com/biotech/jlabs-cant-make-it-anywhere-exit-new-york-l</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">The pharma is transitioning operations and management of its New York City JLABS space to the site owner, the New York Genome Center (NYGC).</td>
+  <td>Mar 17, 20</td>
+</tr><tr class="relevant" data-relevant="1">
+  <td>35</td>
+  <td><a href="https://www.fiercebiotech.com/webinars/spatial-biomarker-panels-for-clinical-trials" target="_blank"><a href="https://www.fiercebiotech.com/webinars/spatial-biomarker-panels-for-clinical-tria</a></td>
+  <td>Fierce Biotech</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.15</td>
+  <td class="snippet">This webinar covers how recent advances in multiplex immunofluorescence technology are enabling high-throughput analysis of high-plex biomarker panels for oncology trials.</td>
+  <td>Feb 26, 20</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>36</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/bijna-de-helft-van-de-weesgeneesmiddelen-niet-beschikbaar-voor-nederlandse-patienten/" target="_blank">Bijna de helft van de weesgeneesmiddelen niet beschikbaar voor Nederlandse patiënten</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">1,2 miljoen mensen in Nederland leven met een zeldzame aandoening, vaak zonder uitzicht op een effectieve behandeling. Ondanks dat er steeds meer innovatieve weesgeneesmiddelen een</td>
+  <td>Tue, 03 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>37</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/praatplaat-wereld-met-toekomst/" target="_blank">Praatplaat wereld met toekomst</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">De wat, waarom en hoe van onze ambitie voor een betere wereld voor mens, dier én planeet. 
+The post Praatplaat wereld met toekomst appeared first on hollandbio.</td>
+  <td>Fri, 06 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>38</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/nederlandse-patient-kan-en-wil-niet-wachten/" target="_blank">Nederlandse patiënt kan en wil niet wachten</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">In Kassa werd &#8211; hartverscheurend &#8211; duidelijk wat de consequenties zijn van de keuzes die Nederland maakt in de vergoeding van nieuwe geneesmiddelen: jonge moeder Jolie </td>
+  <td>Tue, 10 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>39</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/een-kleine-stap-voor-de-farmawetgeving-grote-gevolgen-voor-het-innovatieklimaat/" target="_blank">Een kleine stap voor de farmawetgeving, grote gevolgen voor het innovatieklimaat?</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Afgelopen week publiceerde de Raad van de Europese Unie de tekst rondom het compromisvoorstel voor de nieuwe Europese farmaceutische wetgeving: tijd om de balans op te maken. Voor </td>
+  <td>Tue, 10 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>40</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/eu-begaat-big-misteak-met-namenban-voor-alles-anders-dan-slachtvlees/" target="_blank">EU begaat big misteak met namenban voor alles anders dan slachtvlees</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Zeer tegen de&#160;recentelijk&#160;uitgesproken wens van Nederland&#160;in&#160;ligt een Europees verbod op vleesnamen voor vegetarische producten&#160;ons zwaar op de maag.&#160;</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>41</td>
+  <td><a href="https://www.hollandbio.nl/nieuws/is-het-toekomstbestendig-stelsel-geneesmiddelen-echt-klaar-voor-de-toekomst/" target="_blank">Is het Toekomstbestendig Stelsel Geneesmiddelen echt klaar voor de toekomst?</a></td>
+  <td>HollandBIO</td>
+  <td><span class="tier2">Tier 2</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">De Nederlandse zorg staat onder druk. Er komen steeds meer patiënten bij, maar het aantal handen aan het bed groeit niet mee. Hierdoor lopen wachttijden op en wordt de druk op zorg</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>42</td>
+  <td><a href="https://www.biopharmatrend.com/post/1522-ex-neuralink-founder-raises-290m-to-restore-vision-with-a-rice-grain-sized-retinal-implant/" target="_blank">Ex-Neuralink Founder Raises $290M to Restore Vision With a Rice Grain-Sized Retinal Implan</a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Alameda-based Science Corporation has raised $230 million in Series C financing from investors including Lightspeed Venture Partners, Khos</td>
+  <td>2026-03-17</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>43</td>
+  <td><a href="https://www.biopharmatrend.com/post/1523-open-radiology-ai-model-released-for-ct-mri-analysis/" target="_blank">Open Radiology AI Model Released for CT & MRI Analysis</a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Radiology AI company Raidium has released Curia-2, an open source foundation model intended to serve as a shared technical framework for analyzing medical imaging data across radio</td>
+  <td>2026-03-17</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>44</td>
+  <td><a href="https://www.biopharmatrend.com/post/1525-deepmind-mit-alumni-raise-135m-to-build-generative-knowledge-discovery-ai/" target="_blank">DeepMind & MIT Alumni Raise $13.5M to Build «Generative Knowledge Discovery» AI</a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Palo Alto- and Cambridge-based Unreasonable Labs has emerged from stealth with $13.5 million in funding to develop an AI platform designed for &ldquo;generative knowledge discovery</td>
+  <td>2026-03-17</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>45</td>
+  <td><a href="https://www.biopharmatrend.com/post/1526-from-electronic-noses-to-agentic-drug-design-what-cancer-ai-looks-like-now/" target="_blank">From Electronic Noses to Agentic Drug Design: What Cancer AI Looks Like Now</a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Cancer AI has moved into some unusual territory. In one recent example, researchers at Link&ouml;ping University reported that a 32-sensor electronic nose could distinguish ovarian</td>
+  <td>2026-03-17</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>46</td>
+  <td><a href="https://www.biopharmatrend.com/post/1527-unlocking-the-full-potential-of-precision-medicine-why-companion-diagnostics-must-start-at-discovery/" target="_blank">Unlocking the Full Potential of Precision Medicine: Why Companion Diagnostics Must Start a</a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Precision medicine has transformed the way we treat cancer, making it possible to match therapies to the molecular profile of each patient and revolutionize treatment approaches, l</td>
+  <td>2026-03-17</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>47</td>
+  <td><a href="https://www.biopharmatrend.com/post/1528-first-invasive-bci-for-paralysis-cleared-for-everyday-use-in-china/" target="_blank">First Invasive BCI for Paralysis Cleared for Everyday Use in China</a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">China&rsquo;s National Medical Products Administration (NMPA) has authorized an implantable brain-computer interface (BCI) designed to</td>
+  <td>2026-03-17</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>48</td>
+  <td><a href="https://www.biopharmatrend.com/post/1530-arctoris-opens-biophysics-centre-to-target-data-bottleneck-in-ai-drug-design/" target="_blank">Arctoris Opens Biophysics Centre To Target Data Bottleneck in AI Drug Design</a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Arctoris, a UK-based partnership research organization (PRO), has launched the Biophysics Centre of Excellence, a major expansion of its laboratory footprint and instrumentation ai</td>
+  <td>2026-03-17</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>49</td>
+  <td><a href="https://www.biopharmatrend.com/post/1531-roche-launches-its-own-ai-factory-for-drug-development/" target="_blank">Roche Launches its Own AI Factory for Drug Development</a></td>
+  <td>BioPharma Trend</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">After purchasing 2,176 Nvidia Blackwell GPUs, Roche announced the launch of a large-scale &ldquo;AI factory&rdquo; built on NVIDIA accelerated computing, aiming to integrate AI acr</td>
+  <td>2026-03-17</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>50</td>
+  <td><a href="https://www.eu-startups.com/2026/03/why-malta-is-a-great-launchpad-for-startups-and-investors-from-across-europe-and-beyond/" target="_blank">Why Malta is a great launchpad for startups and investors from across Europe and beyond</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Malta is known for its year-round sunshine, rich history, and strategic location in the Mediterranean. Increasingly, however, the island is earning a different reputation: one as a</td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>51</td>
+  <td><a href="https://www.eu-startups.com/2026/03/madrids-webel-closes-e4-3-million-pre-series-a-round-to-evolve-into-a-home-services-super-app-across-europe/" target="_blank">Madrid’s Webel closes €4.3 million pre-Series A round to evolve into a home services “supe</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Webel, a Madrid-based digital marketplace for home services, has closed a €4.3 million pre-Series A funding round to accelerate its growth, enhance its technology, and broaden its </td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>52</td>
+  <td><a href="https://www.eu-startups.com/2026/03/londons-first-concepts-raises-e871k-to-build-taste-aware-ai-operating-system-for-creative-agencies/" target="_blank">London’s First Concepts raises €871.7k to build “taste-aware” AI operating system for crea</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">First Concepts, a London-based startup that has built an AI intelligence layer that applies context and taste to creative pitches, has raised €871.7k ($1 million) in pre-Seed fundi</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>53</td>
+  <td><a href="https://www.eu-startups.com/2026/03/wikifarmer-raises-e7-1-million-to-evolve-from-wikipedia-of-farming-into-an-operating-system-for-agricultural-trade/" target="_blank">Wikifarmer raises €7.1 million to evolve from “Wikipedia of Farming” into an “operating sy</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Wikifarmer, an Athens-based B2B AgTech startup using AI to connect food businesses directly with producers, has raised €7.1 million ($7.7 million) to drive global expansion. The ro</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>54</td>
+  <td><a href="https://www.eu-startups.com/2026/03/ceo-founder-of-sequra-david-backstrom-will-be-speaking-at-this-years-eu-startups-summit/" target="_blank">CEO & Founder of seQura, David Bäckström, will be speaking at this year’s EU-Startups Summ</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">We are pleased to announce that David Bäckström, Founder and CEO of SeQura, will join the stage at the EU-Startups Summit 2026 on May 7-8 in sunny Malta for a special fireside chat</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>55</td>
+  <td><a href="https://www.eu-startups.com/2026/03/berlins-upvest-raises-e108-million-to-scale-securities-infrastructure-for-banks-and-fintechs/" target="_blank">Berlin’s Upvest raises €108 million to scale securities infrastructure for banks and FinTe</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Upvest, a German investment infrastructure provider, today announces a €108 million ($125 million) financing round to accelerate the modernisation of legacy banking systems across </td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>56</td>
+  <td><a href="https://www.eu-startups.com/2026/03/amsterdams-workflex-secures-e37-million-as-geopolitical-instability-drives-urgency-around-cross-border-mobility-compliance/" target="_blank">Amsterdam’s WorkFlex secures €37 million as geopolitical instability drives urgency around</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">WorkFlex, an Amsterdam-based platform for international travel compliance management, today announced that it has secured a €37 million strategic growth investment led by Spectrum </td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>57</td>
+  <td><a href="https://www.eu-startups.com/2026/03/new-e70-million-gvc-gaesco-fund-targets-infratech-startups-focused-on-energy-industry-and-digital-infrastructure/" target="_blank">New €70 million GVC Gaesco fund targets InfraTech startups focused on energy, industry and</a></td>
+  <td>EU Startups</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">GVC Gaesco Alternative Investments, an investment arm of the Barcelona-based financial group GVC Gaesco, has launched a €70 million fund focused on Infratech startups developing th</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>58</td>
+  <td><a href="https://sifted.eu/articles/alan-health-insurance-startup-index/" target="_blank">Health insurance unicorn Alan hits €5bn valuation</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Wed, 11 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>59</td>
+  <td><a href="https://sifted.eu/articles/revolut-uk-banking-licence-granted/" target="_blank">Revolut finally wins UK banking licence after five-year tussle</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Wed, 11 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>60</td>
+  <td><a href="https://sifted.eu/articles/she-is-europes-youngest-female-managing-partner/" target="_blank">Europe’s youngest female managing partner: ‘We won’t build enduring VC firms if we don’t s</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Thu, 12 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>61</td>
+  <td><a href="https://sifted.eu/articles/all-the-decacorns-in-europe-listed/" target="_blank">All the decacorns in Europe: listed</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Thu, 12 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>62</td>
+  <td><a href="https://sifted.eu/articles/nscale-compute-deadlines/" target="_blank">Nscale is set to deliver $14bn of compute. Can it meet its deadlines?</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Thu, 12 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>63</td>
+  <td><a href="https://sifted.eu/articles/uvc-partners-growth-fund/" target="_blank">UVC Partners raises €77m first close of new growth fund in ‘move into multi-stage investin</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Thu, 12 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>64</td>
+  <td><a href="https://sifted.eu/articles/owkin-spinout-waiv-raises-33m-to-scale-ai-powered-medical-testing/" target="_blank">Owkin spinout Waiv raises $33m to scale AI-powered medical testing</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Thu, 12 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>65</td>
+  <td><a href="https://sifted.eu/articles/the-anatomy-of-venture-capital/" target="_blank">The anatomy of venture capital</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Fri, 13 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>66</td>
+  <td><a href="https://sifted.eu/articles/allica-bank-investor-unfair-prejudice/" target="_blank">Allica Bank founder sues investor for ‘unfair prejudice’</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Fri, 13 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>67</td>
+  <td><a href="https://sifted.eu/articles/europes-hottest-secondaries/" target="_blank">Vinted, ElevenLabs, Iceye: Inside Europe’s hottest secondary sales</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Fri, 13 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>68</td>
+  <td><a href="https://sifted.eu/articles/inside-secondaries-market-europe/" target="_blank">Inside the booming secondaries market in Europe: 'Who isn’t selling?’</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Fri, 13 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>69</td>
+  <td><a href="https://sifted.eu/articles/europe-growth-funds/" target="_blank">Europe’s growth fund push</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Fri, 13 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>70</td>
+  <td><a href="https://sifted.eu/articles/helene-huby-podcast/" target="_blank">Hélène Huby, CEO of The Exploration Company: ‘Only the crazy people change the world’</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Fri, 13 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>71</td>
+  <td><a href="https://sifted.eu/articles/eu-inc-28-regime-leaked-plans/" target="_blank">Leaked plans for 28th regime not good enough, says EU Inc</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Fri, 13 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>72</td>
+  <td><a href="https://sifted.eu/articles/the-20-startups-chosen-for-the-ai-accelerator-backed-by-sequoia-general-catalyst-mistral-and-openai/" target="_blank">Revealed: The 20 startups chosen for the AI accelerator backed by Sequoia, General Catalys</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>73</td>
+  <td><a href="https://sifted.eu/articles/londonmaxxing-meme-london-uk-ai-ecosystem/" target="_blank">Londonmaxxing has got my cortisol spiking</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>74</td>
+  <td><a href="https://sifted.eu/articles/most-active-ai-investors-europe-2025/" target="_blank">These were the most active AI investors in 2025</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>75</td>
+  <td><a href="https://sifted.eu/articles/global-hub-impact-investment-brnd/" target="_blank">ChangeNOW 2026 turns Paris into a global hub for impact investment</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>76</td>
+  <td><a href="https://sifted.eu/articles/european-neoclouds-data-centres/" target="_blank">It’s not just Nscale. Here are all of Europe’s neoclouds, mapped</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>77</td>
+  <td><a href="https://sifted.eu/articles/netherlands-most-active-investors/" target="_blank">The most active investors in the Netherlands</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>78</td>
+  <td><a href="https://sifted.eu/articles/dozens-scaleup-execs-new-vc-firm-europes-next-decacorn/" target="_blank">Dozens of scaleup execs back new VC to find Europe’s next decacorn</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>79</td>
+  <td><a href="https://sifted.eu/articles/fastest-ai-wins-are-from-smbs-brnd/" target="_blank">Why the fastest AI wins aren’t coming from big enterprises</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>80</td>
+  <td><a href="https://sifted.eu/articles/upvest-tencent-funding-round-fintech/" target="_blank">Upvest wins backing from Tencent and Sapphire Ventures for $125m raise</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>81</td>
+  <td><a href="https://sifted.eu/articles/fintech-london-startup-investment-sovereignty-europe/" target="_blank">European fintech’s sovereignty problem is getting harder to ignore</a></td>
+  <td>Sifted</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet"></td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>82</td>
+  <td><a href="https://thenextweb.com/news/nvidia-nemoclaw-openclaw-enterprise-security" target="_blank">Nvidia turns OpenClaw into an enterprise platform with NemoClaw</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">A single command now installs security, privacy guardrails, and local AI models on the world’s fastest-growing open-source agent platform. OpenClaw launched on 25 January 2026. Aus</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>83</td>
+  <td><a href="https://thenextweb.com/news/eyou-social-media-pre-seed-european-fact-checking" target="_blank">eYou raises €300K pre-seed to build a European social media platform with real-time fact-c</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Founded by two French serial entrepreneurs who have spent decades in Romania, the platform aims to be a trust-by-design alternative to X and Facebook, with a public launch set for </td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>84</td>
+  <td><a href="https://thenextweb.com/news/gecko-robotics-navy-contract-ship-digital-twins" target="_blank">Gecko Robotics lands $71M Navy deal to send wall-climbing robots inside warships</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">The Pittsburgh startup’s AI platform will create digital twins of Pacific Fleet vessels, starting with 18 ships, as the Navy races to fix a maintenance crisis costing up to $20 bil</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>85</td>
+  <td><a href="https://thenextweb.com/news/partech-impact-fund-300m-europe-climate-industrial-tech" target="_blank">Partech closes its first impact fund at €300M to back Europe&#8217;s next generation of in</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">The Paris-based VC is targeting 15 B2B companies with revenues above €10M in clean manufacturing, sustainable agriculture, green construction, and digital health, with carry tied t</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>86</td>
+  <td><a href="https://thenextweb.com/news/blify-21m-pre-seed-ai-learning-platform" target="_blank">Blify secures $2.1M to bring AI-native training to Slack and Teams</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Corporate training has a staging problem. Companies spend billions on learning management systems that employees log into once, skip half the modules, and forget about until HR sen</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>87</td>
+  <td><a href="https://thenextweb.com/news/steward-ai-5m-aml-compliance-investment-managers" target="_blank">Steward raises $5M to automate AML compliance for the $100B investment management market</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Compliance is the part of financial services that nobody likes to talk about, and nobody can afford to get wrong. For investment managers, the obligation to know your client, verif</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>88</td>
+  <td><a href="https://thenextweb.com/news/upvest-125m-raise-tencent-sapphire-ventures" target="_blank">Upvest raises $125M at €640M valuation as European retail investing accelerates</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">The Berlin startup, now valued at €640M, counts Revolut, N26 and Santander’s Openbank among its clients after processing more than 100 million investment orders last year. Twelve m</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>89</td>
+  <td><a href="https://thenextweb.com/news/tracebit-20m-series-a-cloud-deception-security" target="_blank">Tracebit raises $20M to scale cloud honeypots as enterprise deception security grows</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">The startup, which plants millions of decoy assets across cloud environments to catch intruders in the act, closed its Series A led by FirstMark as enterprise security teams warm t</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>90</td>
+  <td><a href="https://thenextweb.com/news/google-meta-amazon-industry-accord-online-scams-fraud" target="_blank">Google, Meta, Amazon and 8 other tech giants sign global accord to share scam intelligence</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">The Industry Accord Against Online Scams and Fraud, announced at the UN Global Fraud Summit in Vienna, commits 11 companies to share threat intelligence and coordinate defences aga</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>91</td>
+  <td><a href="https://thenextweb.com/news/operator-circle-vc-europe-scaleup-executives-decacorn" target="_blank">Former scaleup operators launch Operator Circle VC to back Europe&#8217;s next decacorn</a></td>
+  <td>The Next Web</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Dozens of executives from European tech scaleups have backed a new venture firm built on the thesis that people who have scaled billion-dollar companies know which founders can do </td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>92</td>
+  <td><a href="https://www.statnews.com/2026/03/16/health-news-disabled-cdc-staff-still-missing-accommodations/?utm_campaign=rss" target="_blank">Disabled CDC staff still missing accommodations</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">The transformation of organ transplantation, an age to start considering statins, and other health news</td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>93</td>
+  <td><a href="https://www.statnews.com/pharmalot/2026/03/16/pharmalittle-obesity-pill-trial-results-new-cholesterol-guidelines/?utm_campaign=rss" target="_blank">STAT+: Pharmalittle: We’re reading about obesity pill trial results, cholesterol guideline</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Structure Therapeutics disclosed that its daily obesity pill led patients to lose about 16% of their body weight relative to placebo after 44 weeks</td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>94</td>
+  <td><a href="https://www.statnews.com/2026/03/16/brain-computer-interface/?utm_campaign=rss" target="_blank">STAT+: A brain-computer interface allowed people with paralysis to type with their minds</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Two people with paralysis were able to type using a brain-computer interface that decodes attempted finger movement, a new study showed.</td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>95</td>
+  <td><a href="https://www.statnews.com/pharmalot/2026/03/16/asthma-patients-gsk-egregious-price-hikes-monopoly/?utm_campaign=rss" target="_blank">STAT+: Asthma patients suffered as GSK pursued ‘egregious’ price hikes, senator says</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">After GSK replaced a popular asthma inhaler with an identical product at a higher price, families reported substantial financial and treatment problems, according to a new report.</td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>96</td>
+  <td><a href="https://www.statnews.com/2026/03/16/health-care-inc-medicaid-still-going-commercial/?utm_campaign=rss" target="_blank">STAT+: Medicaid still going commercial</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">One of the most interesting health care legal cases right now, big Medicaid approvals, and more</td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>97</td>
+  <td><a href="https://www.statnews.com/2026/03/16/kennedy-childhood-vaccine-changes-blocked-judge/?utm_campaign=rss" target="_blank">Federal judge stalls health secretary RFK Jr.’s overhaul of vaccine policy</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Breaking: A federal judge on Monday stalled major parts of health secretary Robert F. Kennedy Jr.’s campaign to remake vaccine policy in the U.S.</td>
+  <td>Mon, 16 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>98</td>
+  <td><a href="https://www.statnews.com/2026/03/17/federally-qualified-health-centers-fqhcs-crisis/?utm_campaign=rss" target="_blank">Opinion: The greatest threat to federally qualified health centers may not be federal fund</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">After 50 years of operation, FQHCs are discovering that their financial structure has not kept pace with the realities of delivering on their mission.</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>99</td>
+  <td><a href="https://www.statnews.com/2026/03/17/generic-semaglutide-india-bmi-obesity-definition/?utm_campaign=rss" target="_blank">Opinion: Semaglutide is going off-patent in India. But will people who need it be able to </a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Rules determining who gets access to semaglutide in India were written for different bodies with different cardiovascular risks.</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>100</td>
+  <td><a href="https://www.statnews.com/2026/03/17/mfn-drug-pricing-divide-trump-congress-talks/?utm_campaign=rss" target="_blank">STAT+: White House digs in on ‘most-favored nation’ drug pricing despite Congress’ cool re</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Despite a cool reception from Congress, the White House is looking to intensify its pressure campaign on lawmakers to pass a “most-favored nation" drug pricing bill.</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>101</td>
+  <td><a href="https://www.statnews.com/2026/03/17/beacon-casp-coalition-tackle-science-reproducibility-crisis/?utm_campaign=rss" target="_blank">STAT+: For decades, they’ve set the record straight in biology. Next up: science’s reprodu</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">A group of researchers are launching an effort to validate big scientific claims, with help from artificial intelligence.</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>102</td>
+  <td><a href="https://www.statnews.com/2026/03/17/nih-grant-funding-slowdown-new-awards-training-grants/?utm_campaign=rss" target="_blank">STAT+: NIH grant awards are again lagging far behind historical averages, analysis shows</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">Nearly halfway into the 2026 fiscal year, the NIH is far behind on grant spending, new data show</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>103</td>
+  <td><a href="https://www.statnews.com/pharmalot/2026/03/17/trump-pharma-gsk-asthma-hiv-sanofi/?utm_campaign=rss" target="_blank">STAT+: Pharmalittle: We’re reading about Trump’s drug pricing moves, a GSK asthma drug, an</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">The White House is looking to intensify its pressure campaign on Congress to pass legislation to codify a “most-favored nation” drug pricing policy</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>104</td>
+  <td><a href="https://www.statnews.com/2026/03/17/health-news-nih-grant-awards-lagging-again/?utm_campaign=rss" target="_blank">NIH grant awards are lagging (again)</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">How to type with your mind, who might not need to take blood pressure meds, and other health news</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>105</td>
+  <td><a href="https://www.statnews.com/2026/03/17/epic-legal-win-but-saga-continues-health-tech/?utm_campaign=rss" target="_blank">STAT+: Epic notches a legal win, but the saga continues</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">In this edition of STAT Health Tech: An update on Epic's lawsuit over alleged improper access to health records, Nvidia's new radiology AI partnership, and more.</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>106</td>
+  <td><a href="https://www.statnews.com/2026/03/17/cigarette-smoking-rate-below-10-percent-cdc-data-says/?utm_campaign=rss" target="_blank">Smoking rates are at a historic low. You’re not hearing about it from the government</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">The CDC had remarkable data on smoking rates last fall, but it no longer had smoking experts available to review it and disseminate it.</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>107</td>
+  <td><a href="https://www.statnews.com/2026/03/17/rfk-jr-maha-vaccine-policy-rejected-judge-acip-postponed-dc-diagnosis/?utm_campaign=rss" target="_blank">STAT+: Judge deals blow to RFK Jr.’s vaccine reforms</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">The meeting of the Advisory Committee on Immunization Practices that was scheduled for this week has been postponed.</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>108</td>
+  <td><a href="https://www.statnews.com/2026/03/17/dimension-vc-biotech-artificial-intelligence/?utm_campaign=rss" target="_blank">STAT+: VC firm Dimension scouting out $700 million for new fund</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">A buzzy venture capital firm has started raising its third fund, hoping to amass around $700 million to invest in companies that meld AI and science.</td>
+  <td>Tue, 17 Ma</td>
+</tr><tr class="irrelevant" data-relevant="0">
+  <td>109</td>
+  <td><a href="https://www.statnews.com/2026/03/17/nih-director-jay-bhattacharya-reassures-congress-on-funding/?utm_campaign=rss" target="_blank">STAT+: NIH will spend its full budget this year, agency director promises House appropriat</a></td>
+  <td>STAT News</td>
+  <td><span class="tier1">Tier 1</span></td>
+  <td class="score-low">0.0</td>
+  <td class="snippet">NIH Director Jay Bhattacharya promised a House subcommittee on Tuesday that the agency will spend its full budget by the end of the 2026 fiscal year</td>
+  <td>Tue, 17 Ma</td>
+</tr></tbody></table>
+<script>
+function filterTable() {
+  const q = document.getElementById('search').value.toLowerCase();
+  document.querySelectorAll('#signals tbody tr').forEach(row => {
+    row.style.display = row.textContent.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+function showAll(btn) {
+  setActive(btn);
+  document.querySelectorAll('#signals tbody tr').forEach(r => r.style.display = '');
+}
+function showRelevant(btn) {
+  setActive(btn);
+  document.querySelectorAll('#signals tbody tr').forEach(r => {
+    r.style.display = r.dataset.relevant === '1' ? '' : 'none';
+  });
+}
+function setActive(btn) {
+  document.querySelectorAll('.filters button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+</script>
+</body></html>

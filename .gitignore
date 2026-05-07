@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtualenvs
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+
+# Runtime / secrets
+.env
+*.log
+
+# Data outputs that can get large or be regenerated
+data/signals.db
+data/shortlist/
+data/analyses/
+data/briefings/

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biotech Radar — PESTLE Keywords</title>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 40px; background:#f7f8fa; color:#1f2937; }
+    h1,h2 { color:#0f172a; }
+    .meta { color:#475569; margin-bottom: 24px; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(320px,1fr)); gap:20px; }
+    .card { background:white; border:1px solid #e5e7eb; border-radius:14px; padding:20px; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+    .cat { font-size: 1.15rem; font-weight: 700; margin-bottom: 10px; }
+    ul { margin: 0; padding-left: 18px; }
+    li { margin: 6px 0; }
+    code { background:#eef2ff; padding:2px 6px; border-radius:6px; }
+  </style>
+</head>
+<body>
+  <h1>Biotech Radar — PESTLE Keywords</h1>
+  <p class="meta">Dit overzicht is gebaseerd op de actuele <code>PESTLE_KEYWORDS</code> in <code>pipeline/3_prioriteren.py</code>.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="cat">Policy</div>
+      <ul>
+        <li>regulation</li><li>EFSA</li><li>Novel Food</li><li>EU Biotech Act</li><li>NGT</li>
+        <li>new genomic techniques</li><li>vergunning</li><li>regelgeving</li><li>kamerbrief</li><li>kabinet</li>
+        <li>beleid</li><li>voedselveiligheid</li><li>toelating</li><li>approval</li><li>wetgeving</li>
+        <li>EU food law</li><li>industriebeleid</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="cat">Economic</div>
+      <ul>
+        <li>funding</li><li>investering</li><li>series</li><li>scale-up</li><li>groeifonds</li>
+        <li>venture</li><li>capital</li><li>markt</li><li>financiering</li><li>opschaling</li>
+        <li>marktontwikkeling</li><li>food market</li><li>alternative protein market</li><li>cost parity</li><li>commercialisatie</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="cat">Social</div>
+      <ul>
+        <li>consument</li><li>acceptatie</li><li>voedseltransitie</li><li>eiwittransitie</li><li>maatschappij</li>
+        <li>gezondheid</li><li>sustainability</li><li>voedselzekerheid</li><li>consumer</li><li>public opinion</li><li>adoption</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="cat">Technology</div>
+      <ul>
+        <li>precision fermentation</li><li>fermentation</li><li>NGT</li><li>cellular agriculture</li><li>bioreactor</li>
+        <li>novel protein</li><li>alternative protein</li><li>plant protein</li><li>biobased</li><li>reststromen</li>
+        <li>circulaire verwerking</li><li>biorefinery</li><li>fermentation-derived</li><li>cultivated</li><li>synthetic biology</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="cat">Environmental</div>
+      <ul>
+        <li>circulair</li><li>duurzaam</li><li>CO2</li><li>emissie</li><li>waste</li>
+        <li>reststromen</li><li>klimaat</li><li>biodiversiteit</li><li>land use</li><li>water footprint</li><li>circular economy</li><li>biobased economy</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="cat">Policy_early (vroeg-signaal bonus)</div>
+      <ul>
+        <li>first in EU</li><li>first in europe</li><li>precedent</li><li>paves way</li><li>pre-approval</li>
+        <li>regulatory sandbox</li><li>experimenteerruimte</li><li>regelvrije zone</li><li>ahead of regulation</li><li>policy gap</li>
+        <li>tasting event</li><li>proefsmaken</li><li>eerste in europa</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Opmerking</h2>
+  <p>Deze keywords worden in de scoring gebruikt als trefwoorden per categorie. In de huidige implementatie worden treffers opgeteld en vermenigvuldigd met de categorie-gewichten uit de rubric, plus een extra bonus voor <code>Policy_early</code>.</p>
+</body>
+</html>

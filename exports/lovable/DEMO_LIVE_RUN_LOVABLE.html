@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biotech Radar — Live Prototype Run</title>
+  <style>
+    :root {
+      --bg:#08111f; --bg2:#0d1830; --panel:rgba(16,26,49,.92); --panel2:rgba(26,40,74,.96);
+      --line:rgba(140,165,220,.18); --text:#eef3ff; --muted:#aebad8; --blue:#73b2ff; --green:#66e7b4; --yellow:#f4c96a;
+    }
+    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,sans-serif;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--text);line-height:1.55}
+    .wrap{max-width:1240px;margin:0 auto;padding:28px 24px 72px}
+    .hero,.panel,.signal-card,.footer{background:var(--panel);border:1px solid var(--line);border-radius:24px}
+    .hero{padding:34px;background:linear-gradient(135deg,rgba(115,178,255,.16),rgba(244,201,106,.08) 52%,rgba(102,231,180,.08)),var(--panel)}
+    h1,h2,h3{margin:0 0 12px;line-height:1.1} h1{font-size:clamp(38px,5vw,62px)} h2{font-size:30px;margin-top:42px} h3{font-size:22px}
+    p,li{color:var(--muted);font-size:16px} strong{color:var(--text)}
+    .chips,.stats,.signals{display:grid;gap:18px} .chips{grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:22px} .stats{grid-template-columns:repeat(auto-fit,minmax(220px,1fr));margin-top:18px}
+    .chip,.stat,.panel,.signal-card,.footer{padding:20px} .chip,.stat{background:var(--panel2);border:1px solid var(--line);border-radius:20px}
+    .label{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--blue);margin-bottom:8px;font-weight:800}
+    .big{font-size:32px;font-weight:800;color:var(--text)}
+    code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace} code{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:8px;padding:2px 7px;color:var(--text)}
+    pre{background:#08101f;border:1px solid var(--line);border-radius:16px;padding:16px;overflow:auto;color:#dce7ff;font-size:13px;line-height:1.5}
+    .two{display:grid;grid-template-columns:1.05fr .95fr;gap:18px} .three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px}
+    .signal-card h3{font-size:22px} .signal-head{display:flex;gap:16px;align-items:flex-start} .signal-rank{min-width:44px;height:44px;border-radius:14px;display:grid;place-items:center;background:rgba(115,178,255,.14);border:1px solid var(--line);font-weight:800}
+    .signal-source{font-size:13px;color:var(--blue);font-weight:800;letter-spacing:.04em;text-transform:uppercase;margin-bottom:6px}
+    .meta-row{display:flex;flex-wrap:wrap;gap:14px;font-size:14px;color:var(--muted);margin:10px 0 12px}
+    a{color:var(--green);text-decoration:none;font-weight:700} a:hover{text-decoration:underline}
+    .note{border-left:4px solid var(--yellow);padding:14px 16px;background:rgba(244,201,106,.08);border-radius:14px;color:var(--text)}
+    .footer{margin-top:30px}
+    @media (max-width:980px){.two,.three{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <div class="label">Live prototype run</div>
+      <h1>Biotech Radar — zo doe je een run, en dit is wat er nu echt uit komt</h1>
+      <p>Deze pagina laat de <strong>actuele output</strong> van het prototype zien. Niet fictief, maar gebaseerd op de laatste run van ingest → filter → prioritering → shortlist.</p>
+      <div class="chips">
+        <div class="chip"><div class="label">Run type</div><div><strong>Daily machine run</strong><br><span style="color:var(--muted)">zonder LLM-duiding</span></div></div>
+        <div class="chip"><div class="label">Bronnen</div><div><strong>10 actieve RSS/API-bronnen</strong><br><span style="color:var(--muted)">search nu geen hoofdroute</span></div></div>
+        <div class="chip"><div class="label">Batch</div><div><strong>20260507T073958Z</strong><br><span style="color:var(--muted)">gegenereerd 2026-05-07T07:39:58.689383+00:00</span></div></div>
+      </div>
+    </section>
+
+    <h2>1. Hoe doe je een run?</h2>
+    <div class="two">
+      <div class="panel">
+        <h3>Volledige prototype-run</h3>
+        <pre>python3 /home/brewuser/projects/biotech-radar/pipeline/1_ophalen.py
+python3 /home/brewuser/projects/biotech-radar/pipeline/1.5_dedupe.py
+python3 /home/brewuser/projects/biotech-radar/pipeline/2_filteren.py
+python3 /home/brewuser/projects/biotech-radar/pipeline/3_prioriteren.py
+python3 /home/brewuser/projects/biotech-radar/pipeline/4_select_shortlist.py</pre>
+        <p>Dit is de minimale echte run voor de demo. Hiermee haal je nieuwe bronnen op, filter je ruis weg, prioriteer je signalen en maak je een shortlist.</p>
+      </div>
+      <div class="panel">
+        <h3>Wat er daarna nog kan</h3>
+        <pre>python3 /home/brewuser/projects/biotech-radar/pipeline/5_analyse_llm.py
+python3 /home/brewuser/projects/biotech-radar/pipeline/6_weekbriefing.py</pre>
+        <p>Stap 5 en 6 voegen LLM-duiding en briefing toe. In dit prototype is de machine-output al bruikbaar; de LLM-laag is voor extra interpretatie.</p>
+      </div>
+    </div>
+
+    <h2>2. Wat kwam er nu uit deze run?</h2>
+    <div class="stats">
+      <div class="stat"><div class="label">Relevante signalen</div><div class="big">47</div><p>Items die de scope-filter overleven.</p></div>
+      <div class="stat"><div class="label">Verwijderd</div><div class="big">324</div><p>Ruis, out-of-scope of te zwakke items.</p></div>
+      <div class="stat"><div class="label">Shortlist</div><div class="big">4</div><p>Items die recent genoeg en sterk genoeg zijn voor verdere analyse.</p></div>
+      <div class="stat"><div class="label">Lookback</div><div class="big">21 dagen</div><p>Alles ouder dan dit valt buiten de shortlist.</p></div>
+    </div>
+
+    <h2>3. Dit zijn de echte signalen uit de huidige shortlist</h2>
+    <div class="note">Belangrijk: dit zijn <strong>echte signalen uit de bronnen</strong>, nog vóór de LLM-duiding. Dus dit is precies wat het prototype nu zelfstandig kan laten zien.</div>
+    <div class="signals" style="margin-top:18px;"><div class="signal-card">
+      <div class="signal-head">
+        <div class="signal-rank">1</div>
+        <div>
+          <div class="signal-source">Vegconomist — Fermentation · RSS · T1</div>
+          <h3>Ovalbumin Patent Battle Narrows to Delaware as Wisconsin Court Drops Onego Bio Claim</h3>
+        </div>
+      </div>
+      <div class="meta-row">
+        <span>Score: <strong>0.5</strong></span>
+        <span>Effectieve score: <strong>0.5</strong></span>
+        <span>Leeftijd: <strong>0.76 dagen</strong></span>
+      </div>
+      <p>&lt;img alt=&quot;San Francisco-based The EVERY Company has received a $2 million award from the US Department of Defense (DoD) to explore establishing a precision fermentation facility in the US.&quot; class=&quot;webfeedsFeaturedVisual wp-post-image&quot; height=&quot;559&quot; src=&quot;https://assets.vegconom.de/media/wp-content/uploads/sites/3/2024/12/03125628/The-Every-Co.-egg-proteins.jpg&quot;</p>
+      <a href="https://vegconomist.com/politics-law/ovalbumin-patent-battle-narrows-delaware-wisconsin-court-drops-onego-bio-claim/" target="_blank">Open bron ↗</a>
+    </div><div class="signal-card">
+      <div class="signal-head">
+        <div class="signal-rank">2</div>
+        <div>
+          <div class="signal-source">Vegconomist — Fermentation · RSS · T1</div>
+          <h3>Ruby Bio Reports Fermentation Breakthrough for Clean-Label Emulsifiers as Pressure on Synthetics Mounts</h3>
+        </div>
+      </div>
+      <div class="meta-row">
+        <span>Score: <strong>0.25</strong></span>
+        <span>Effectieve score: <strong>0.25</strong></span>
+        <span>Leeftijd: <strong>1.75 dagen</strong></span>
+      </div>
+      <p>© nordroden - stock.adobe.com Cal</p>
+      <a href="https://vegconomist.com/fermentation/ruby-bio-reports-fermentation-breakthrough-clean-label-emulsifiers/" target="_blank">Open bron ↗</a>
+    </div><div class="signal-card">
+      <div class="signal-head">
+        <div class="signal-rank">3</div>
+        <div>
+          <div class="signal-source">HollandBIO · RSS · T2</div>
+          <h3>De toekomst van ons eten on display</h3>
+        </div>
+      </div>
+      <div class="meta-row">
+        <span>Score: <strong>0.2</strong></span>
+        <span>Effectieve score: <strong>0.2</strong></span>
+        <span>Leeftijd: <strong>15.75 dagen</strong></span>
+      </div>
+      <p>Afgelopen editie tijdens Plant FWD waren slimme voedseloplossingen uit biotech zichtbaar prominent aanwezig – zowel in de inhoudelijke programmering als op de beursvloer. Producten met ingrediënten van onder meer The Protein Brewery, Those Vegan Cowboys en Vivici schitterden onder glazen stolpen als blikvangers van de eiwittransitie. Een prachtig plaatje, maar helaas daar nog niet te [</p>
+      <a href="https://www.hollandbio.nl/nieuws/de-toekomst-van-ons-eten-on-display/" target="_blank">Open bron ↗</a>
+    </div><div class="signal-card">
+      <div class="signal-head">
+        <div class="signal-rank">4</div>
+        <div>
+          <div class="signal-source">HollandBIO · RSS · T2</div>
+          <h3>Hollandbio welcomes Anacura as new member</h3>
+        </div>
+      </div>
+      <div class="meta-row">
+        <span>Score: <strong>0.3</strong></span>
+        <span>Effectieve score: <strong>0.3</strong></span>
+        <span>Leeftijd: <strong>15.8 dagen</strong></span>
+      </div>
+      <p>Hollandbio connects, represents, and supports the Dutch life science sector. We are very proud that we already represent 275 companies: from start-ups, small and medium-sized companies to large companies, active in health, food, or the biobased economy. Today, we are happy to introduce our newest member Anacura, the independent analytical center of excellence providing end-to-end […]</p>
+      <a href="https://www.hollandbio.nl/nieuws/hollandbio-welcomes-anacura-as-new-member/" target="_blank">Open bron ↗</a>
+    </div></div>
+
+    <h2>4. Wat laat deze output nu zien?</h2>
+    <div class="three">
+      <div class="panel">
+        <h3>Wat werkt al goed</h3>
+        <ul>
+          <li>de ingest draait stabiel</li>
+          <li>de scopefilter gooit veel ruis weg</li>
+          <li>de shortlist dwingt recentheid en brondiversiteit af</li>
+          <li>search-resultaten liften niet meer gratis mee</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Wat deze run inhoudelijk zegt</h3>
+        <ul>
+          <li>de huidige shortlist is sterk gericht op <strong>fermentation</strong> en <strong>eiwittransitie</strong></li>
+          <li>Vegconomist en HollandBIO leveren nu concrete hits op</li>
+          <li>de output is nog klein, maar wel scherp genoeg voor demo-doeleinden</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Waar de volgende stap zit</h3>
+        <ul>
+          <li>LLM-duiding toevoegen op deze shortlist</li>
+          <li>source review bouwen om yield per bron te tonen</li>
+          <li>scoring aanscherpen zodat ecosysteem-items nog beter onderscheiden worden</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2>5. Wat is de output voor beleid?</h2>
+    <div class="two">
+      <div class="panel">
+        <h3>Wat je hier als beleidsmaker direct mee kunt</h3>
+        <ul>
+          <li>zien welke signalen nu door de machine als relevant worden gezien</li>
+          <li>volgen waar de beweging zit: opschaling, fermentatie, eiwittransitie, ecosystemen</li>
+          <li>sneller besluiten welke signalen extra duiding of actie vragen</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Eerlijke status van het prototype</h3>
+        <p>De machinefunnel werkt nu end-to-end. De stap die nog extra kwaliteit toevoegt is de LLM-analyse van de shortlist. Maar ook zonder die laag laat het prototype nu al echte bron-signalen zien.</p>
+      </div>
+    </div>
+
+    <div class="footer">
+      <h3>Demo-boodschap</h3>
+      <p>Deze run laat zien dat Biotech Radar nu al een <strong>werkende machinefunnel</strong> is: bronnen erin, ruis eruit, shortlist over. De volgende sprong is niet nog meer scraping, maar betere duiding van deze echte signalen voor beleid.</p>
+    </div>
+  </div>
+</body>
+</html>

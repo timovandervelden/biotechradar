@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biotech Radar — PESTLE Uitleg</title>
+  <style>
+    body { font-family: Inter, Arial, sans-serif; margin: 40px; background:#f8fafc; color:#1f2937; line-height:1.55; }
+    h1,h2 { color:#0f172a; }
+    .meta { color:#475569; margin-bottom: 24px; }
+    .card { background:white; border:1px solid #e5e7eb; border-radius:14px; padding:22px; margin:18px 0; box-shadow:0 1px 2px rgba(0,0,0,.04); }
+    .head { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+    .cat { font-size: 1.2rem; font-weight: 800; }
+    .weight { background:#eef2ff; color:#3730a3; padding:6px 10px; border-radius:999px; font-weight:700; }
+    ul { margin: 10px 0 0 0; padding-left: 20px; }
+    li { margin: 4px 0; }
+    code { background:#eef2ff; padding:2px 6px; border-radius:6px; }
+    .small { color:#64748b; font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <h1>Biotech Radar — PESTLE Uitleg</h1>
+  <p class="meta">Dit document legt uit welke categorieën de radar gebruikt voor prioritering, welke keywords daar nu onder vallen, wat de gewichten zijn, en waarom die categorie relevant is binnen de scope <strong>groene biotech + voedseltransitie</strong>.</p>
+
+  <div class="card">
+    <h2>Bronnen van deze lijst</h2>
+    <ul>
+      <li><strong>Keywords per categorie</strong> komen uit <code>pipeline/3_prioriteren.py</code> (<code>PESTLE_KEYWORDS</code>).</li>
+      <li><strong>Basisgewichten</strong> komen uit <code>config/rubric.yaml</code>.</li>
+      <li>In de huidige code worden twee gewichten expliciet verzwaard: <strong>Technology = 0.25</strong> en <strong>Economic = 0.30</strong>.</li>
+      <li>Daarnaast krijgt <strong>Policy_early</strong> een extra bonusgewicht van <strong>0.40</strong>.</li>
+    </ul>
+    <p class="small">Kort gezegd: dit is niet een abstract PESTLE-model, maar de daadwerkelijke scoringlogica van de huidige radar.</p>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <div class="cat">Policy</div>
+      <div class="weight">gewicht: uit rubric.yaml</div>
+    </div>
+    <p><strong>Waarom relevant?</strong><br>
+    In deze radar is beleid geen achtergrondruis maar vaak de doorslaggevende factor voor markttoegang. Zeker bij Novel Food, NGT en precision fermentation bepaalt regelgeving of innovatie in Nederland en Europa echt kan landen.</p>
+    <p><strong>Keywords:</strong></p>
+    <ul>
+      <li>regulation</li><li>EFSA</li><li>Novel Food</li><li>EU Biotech Act</li><li>NGT</li>
+      <li>new genomic techniques</li><li>vergunning</li><li>regelgeving</li><li>kamerbrief</li><li>kabinet</li>
+      <li>beleid</li><li>voedselveiligheid</li><li>toelating</li><li>approval</li><li>wetgeving</li>
+      <li>EU food law</li><li>industriebeleid</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <div class="cat">Economic</div>
+      <div class="weight">gewicht: 0.30 in code</div>
+    </div>
+    <p><strong>Waarom relevant?</strong><br>
+    Veel food-biotech ontwikkelingen mislukken niet op idee of labniveau, maar op schaal, kapitaal en commercialisatie. Daarom kijkt de radar expliciet naar funding, cost parity, venture-activiteit en marktontwikkeling.</p>
+    <p><strong>Keywords:</strong></p>
+    <ul>
+      <li>funding</li><li>investering</li><li>series</li><li>scale-up</li><li>groeifonds</li>
+      <li>venture</li><li>capital</li><li>markt</li><li>financiering</li><li>opschaling</li>
+      <li>marktontwikkeling</li><li>food market</li><li>alternative protein market</li><li>cost parity</li><li>commercialisatie</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <div class="cat">Social</div>
+      <div class="weight">gewicht: uit rubric.yaml</div>
+    </div>
+    <p><strong>Waarom relevant?</strong><br>
+    Voedselinnovatie is nooit alleen technisch. Acceptatie, maatschappelijk sentiment, consumentengedrag en framing bepalen of iets bestuurlijk en commercieel tractie krijgt.</p>
+    <p><strong>Keywords:</strong></p>
+    <ul>
+      <li>consument</li><li>acceptatie</li><li>voedseltransitie</li><li>eiwittransitie</li><li>maatschappij</li>
+      <li>gezondheid</li><li>sustainability</li><li>voedselzekerheid</li><li>consumer</li><li>public opinion</li><li>adoption</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <div class="cat">Technology</div>
+      <div class="weight">gewicht: 0.25 in code</div>
+    </div>
+    <p><strong>Waarom relevant?</strong><br>
+    De radar wil vroeg zien waar technische doorbraken of nieuwe productieroutes ontstaan die gevolgen hebben voor de voedseltransitie. Daarom ligt hier nadruk op precision fermentation, bioreactors, cellular agriculture en biobased verwerking.</p>
+    <p><strong>Keywords:</strong></p>
+    <ul>
+      <li>precision fermentation</li><li>fermentation</li><li>NGT</li><li>cellular agriculture</li><li>bioreactor</li>
+      <li>novel protein</li><li>alternative protein</li><li>plant protein</li><li>biobased</li><li>reststromen</li>
+      <li>circulaire verwerking</li><li>biorefinery</li><li>fermentation-derived</li><li>cultivated</li><li>synthetic biology</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <div class="cat">Environmental</div>
+      <div class="weight">gewicht: uit rubric.yaml</div>
+    </div>
+    <p><strong>Waarom relevant?</strong><br>
+    Deze categorie speelt mee, maar is in de huidige radar minder dominant dan policy, economics en technology. Milieu-impact is belangrijk, maar niet de primaire driver voor prioritering in deze versie.</p>
+    <p><strong>Keywords:</strong></p>
+    <ul>
+      <li>circulair</li><li>duurzaam</li><li>CO2</li><li>emissie</li><li>waste</li>
+      <li>reststromen</li><li>klimaat</li><li>biodiversiteit</li><li>land use</li><li>water footprint</li><li>circular economy</li><li>biobased economy</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="head">
+      <div class="cat">Policy_early</div>
+      <div class="weight">bonusgewicht: 0.40</div>
+    </div>
+    <p><strong>Waarom relevant?</strong><br>
+    Dit is de vroeg-signaalbonus. De radar beloont expliciet signalen die duiden op precedenten, experimenteerruimte of nieuwe regelruimte. Dat zijn precies de ontwikkelingen die overheidsmensen vaak te laat zien als ze alleen klassieke beleidsbronnen volgen.</p>
+    <p><strong>Keywords:</strong></p>
+    <ul>
+      <li>first in EU</li><li>first in europe</li><li>precedent</li><li>paves way</li><li>pre-approval</li>
+      <li>regulatory sandbox</li><li>experimenteerruimte</li><li>regelvrije zone</li><li>ahead of regulation</li><li>policy gap</li>
+      <li>tasting event</li><li>proefsmaken</li><li>eerste in europa</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Belangrijke interpretatie</h2>
+    <p>De huidige PESTLE-lijst is een werkende eerste versie. De selectie is dus niet puur theoretisch, maar pragmatisch opgebouwd vanuit de vraag: <strong>welke signalen willen we vroeg zien als we groene biotech en voedseltransitie beleidsmatig en strategisch willen volgen?</strong></p>
+    <p>Daarmee is dit overzicht tegelijk bruikbaar als:</p>
+    <ul>
+      <li>uitlegdocument voor stakeholders,</li>
+      <li>startpunt voor validatie met domeinexperts,</li>
+      <li>en checklist voor verdere aanscherping van de radarlogica.</li>
+    </ul>
+  </div>
+</body>
+</html>

@@ -1,0 +1,476 @@
+version: 2
+defaults:
+  cadence: daily
+  status: test
+  language: en
+  geo: international
+  enabled: true
+skip_domains:
+- rvo.nl
+- rijksoverheid.nl
+- nationaalgroeifonds.nl
+sources:
+- name: Vegconomist — Fermentation
+  type: rss
+  url: https://vegconomist.com/feed/
+  tier: 1
+  status: active
+  cadence: daily
+  tags:
+  - vakmedia
+  - food
+  - fermentation
+  - alternative-protein
+  geo: international
+  language: en
+  expected_signal_density: medium
+  notes: Breed maar vaak relevant voor fermentation/novel protein.
+- name: Protein Trends NL
+  type: rss
+  url: https://protein-trends.com/feed/
+  tier: 1
+  status: active
+  cadence: daily
+  tags:
+  - vakmedia
+  - nl
+  - protein
+  - food
+  geo: netherlands
+  language: en
+  expected_signal_density: high
+  notes: Dicht op eiwittransitie en marktontwikkelingen.
+- name: GFI (Good Food Institute)
+  type: rss
+  url: https://gfi.org/feed/
+  tier: 1
+  status: active
+  cadence: daily
+  tags:
+  - market
+  - financing
+  - scale-up
+  - protein
+  - policy
+  geo: international
+  language: en
+  expected_signal_density: medium
+  notes: Sterk voor alt protein, marktontwikkeling en policycontext.
+- name: Eiwittrends NL
+  type: rss
+  url: https://www.eiwittrends.nl/feed/
+  tier: 2
+  status: active
+  cadence: daily
+  tags:
+  - vakmedia
+  - nl
+  - protein
+  geo: netherlands
+  language: nl
+  expected_signal_density: medium
+  notes: Bruikbaar voor NL signaaldetectie; kwaliteit monitoren.
+- name: BioPharma Trend
+  type: rss
+  url: https://www.biopharmatrend.com/rss/
+  tier: 1
+  status: test
+  cadence: daily
+  tags:
+  - biotech
+  - innovation
+  - broad
+  geo: international
+  language: en
+  expected_signal_density: low
+  notes: Breed; alleen behouden als food-link filter voldoende hard blijkt.
+- name: HollandBIO
+  type: rss
+  url: https://www.hollandbio.nl/feed/
+  tier: 2
+  status: active
+  cadence: daily
+  tags:
+  - ecosystem
+  - sector
+  - nl
+  - biotech
+  geo: netherlands
+  language: nl
+  expected_signal_density: medium
+  notes: NL biotech-ecosysteembron; nu geactiveerd voor dagelijkse scan.
+- name: VentureCapital.nl
+  type: rss
+  url: https://venturecapital.nl/feed/
+  tier: 2
+  status: test
+  cadence: daily
+  tags:
+  - investment
+  - nl
+  - market
+  geo: netherlands
+  language: nl
+  expected_signal_density: low
+  notes: Alleen waardevol als food/biotech investeringssignalen doorkomen.
+- name: PubMed - precision fermentation
+  type: rss
+  url: https://pubmed.ncbi.nlm.nih.gov/rss/search/?term=precision+fermentation+food&format=abstract&limit=10
+  tier: 1
+  status: active
+  cadence: daily
+  tags:
+  - science
+  - fermentation
+  - food
+  geo: international
+  language: en
+  expected_signal_density: medium
+  notes: Gericht wetenschappelijk vroegsignaal.
+- name: PubMed - alternative protein Netherlands
+  type: rss
+  url: https://pubmed.ncbi.nlm.nih.gov/rss/search/?term=alternative+protein+Netherlands&format=abstract&limit=10
+  tier: 1
+  status: active
+  cadence: daily
+  tags:
+  - science
+  - nl
+  - protein
+  geo: netherlands
+  language: en
+  expected_signal_density: medium
+  notes: Gericht op NL + alt protein-context.
+- name: Brave - precision fermentation NL scale-up
+  type: search
+  provider: brave
+  query: precision fermentation Netherlands scale-up food 2026
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - fermentation
+  - nl
+  - market
+  geo: netherlands
+  language: en
+  expected_signal_density: medium
+  notes: Fallback, niet primaire motor.
+- name: Brave - EFSA Novel Food approval
+  type: search
+  provider: brave
+  query: EFSA Novel Food approval precision fermentation alternative protein 2026
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - regulation
+  - food
+  geo: eu
+  language: en
+  expected_signal_density: medium
+  notes: Alleen inzetten als gestructureerde bronnen gaten laten vallen.
+- name: Brave - NGT food EU
+  type: search
+  provider: brave
+  query: new genomic techniques NGT food Netherlands EU regulation 2026
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - ngt
+  - eu
+  - regulation
+  geo: eu
+  language: en
+  expected_signal_density: medium
+  notes: Fallback-query.
+- name: Brave - eiwittransitie NL opschaling
+  type: search
+  provider: brave
+  query: eiwittransitie sustainable protein opschaling Nederland 2026
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - nl
+  - protein
+  - scale-up
+  geo: netherlands
+  language: nl
+  expected_signal_density: medium
+  notes: Fallback-query.
+- name: Brave - cellular agriculture food NL
+  type: search
+  provider: brave
+  query: cellular agriculture cultivated protein food Netherlands 2026
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - cellular
+  - nl
+  - food
+  geo: netherlands
+  language: en
+  expected_signal_density: low
+  notes: Fallback-query.
+- name: Brave - biobased food ingredients
+  type: search
+  provider: brave
+  query: biobased food ingredients fermentation Netherlands scale-up
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - biobased
+  - food
+  - ingredients
+  geo: netherlands
+  language: en
+  expected_signal_density: medium
+  notes: Fallback-query.
+- name: Brave - novel protein EU market
+  type: search
+  provider: brave
+  query: novel protein alternative protein Europe market launch 2026
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - protein
+  - eu
+  - market
+  geo: eu
+  language: en
+  expected_signal_density: medium
+  notes: Fallback-query.
+- name: Brave - reststromen voedselsector
+  type: search
+  provider: brave
+  query: reststromen biobased verwerking voedselsector Nederland 2026
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - nl
+  - reststromen
+  - biobased
+  geo: netherlands
+  language: nl
+  expected_signal_density: low
+  notes: Fallback-query.
+- name: Brave - BFF Ede fermentation
+  type: search
+  provider: brave
+  query: BFF Biotechnology Fermentation Factory Ede Netherlands 2026
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - nl
+  - fermentation
+  - infrastructure
+  geo: netherlands
+  language: en
+  expected_signal_density: low
+  notes: Gerichte actor-query.
+- name: Brave - voedseltransitie beleid EU
+  type: search
+  provider: brave
+  query: voedseltransitie food transition policy Netherlands EU 2026
+  tier: 1
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - policy
+  - eu
+  - nl
+  geo: eu
+  language: nl
+  expected_signal_density: medium
+  notes: Fallback-query.
+- name: Brave - Groeifonds cellular agriculture
+  type: search
+  provider: brave
+  query: Nationaal Groeifonds cellular agriculture food Netherlands
+  tier: 2
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - subsidy
+  - nl
+  - cellular
+  geo: netherlands
+  language: nl
+  expected_signal_density: low
+  notes: Fallback-query.
+- name: Brave - FoodValley innovatie
+  type: search
+  provider: brave
+  query: FoodValley Netherlands food innovation alternative protein 2026
+  tier: 2
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - nl
+  - ecosystem
+  - protein
+  geo: netherlands
+  language: en
+  expected_signal_density: low
+  notes: Fallback-query.
+- name: Brave - Wageningen food biotech
+  type: search
+  provider: brave
+  query: Wageningen University food biotech fermentation innovation 2026
+  tier: 2
+  status: paused
+  cadence: weekly
+  tags:
+  - search
+  - science
+  - nl
+  - biotech
+  geo: netherlands
+  language: en
+  expected_signal_density: low
+  notes: Fallback-query.
+- name: Biotech Booster
+  type: rss
+  url: https://www.biotechbooster.nl/feed/
+  tier: 2
+  status: active
+  cadence: daily
+  tags:
+  - ecosystem
+  - sector
+  - nl
+  - biotech
+  geo: netherlands
+  language: nl
+  expected_signal_density: medium
+  notes: Relevant voor NL biotech-ecosysteem, valorisatie en venture-building.
+- name: Cellular Agriculture Europe
+  type: rss
+  url: https://cellularagriculture.eu/feed/
+  tier: 1
+  status: active
+  cadence: daily
+  tags:
+  - sector
+  - eu
+  - cellular-agriculture
+  - policy
+  geo: eu
+  language: en
+  expected_signal_density: medium
+  notes: Direct relevant voor EU-positionering, sectorstandpunten en regulatory beweging.
+- name: Rabobank Foodbytes
+  type: rss
+  url: https://foodbytesworld.com/feed/
+  tier: 2
+  status: test
+  cadence: daily
+  tags:
+  - market
+  - financing
+  - food
+  - innovation
+  geo: international
+  language: en
+  expected_signal_density: low
+  notes: Markt- en innovatiebron; eerst yield testen.
+- name: New Harvest
+  type: page
+  url: https://www.new-harvest.org/updates
+  tier: 2
+  status: test
+  cadence: weekly
+  enabled: false
+  tags:
+  - market
+  - scale-up
+  - cellular-agriculture
+  - research
+  geo: international
+  language: en
+  expected_signal_density: unknown
+  notes: Relevant, maar nog geen bruikbare RSS-feed gevonden; later scraper/API of
+    handmatige review.
+- name: Horizon Europe News
+  type: page
+  url: https://research-and-innovation.ec.europa.eu/news_en
+  tier: 2
+  status: test
+  cadence: weekly
+  enabled: false
+  tags:
+  - internationalisation
+  - eu
+  - funding
+  - innovation
+  geo: eu
+  language: en
+  expected_signal_density: medium
+  notes: Strategisch relevant, maar nog zonder directe RSS-endpoint in huidige pipeline.
+- name: European Innovation Council (EIC) News
+  type: page
+  url: https://eic.ec.europa.eu/news_en
+  tier: 2
+  status: test
+  cadence: weekly
+  enabled: false
+  tags:
+  - internationalisation
+  - eu
+  - funding
+  - scale-up
+  geo: eu
+  language: en
+  expected_signal_density: medium
+  notes: Relevant voor opschaling en deep-tech funding; RSS nog niet netjes ontsloten.
+- name: Eurostars
+  type: page
+  url: https://www.eurostars-eureka.eu/
+  tier: 2
+  status: test
+  cadence: weekly
+  enabled: false
+  tags:
+  - internationalisation
+  - eu
+  - funding
+  - sme
+  geo: eu
+  language: en
+  expected_signal_density: medium
+  notes: 403 op feedprobe; later aparte ingest of handmatige scan nodig.
+- name: Netherlands Innovation Network
+  type: rss
+  url: https://netherlandsinnovation.nl/feed/
+  tier: 2
+  status: active
+  cadence: daily
+  tags:
+  - internationalisation
+  - innovation-attache
+  - nl
+  - global
+  geo: international
+  language: en
+  expected_signal_density: medium
+  notes: Praktische vervanger voor Innovatie Attaché Netwerk feed; direct bruikbaar
+    via RSS.

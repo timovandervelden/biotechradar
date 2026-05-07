@@ -1,0 +1,582 @@
+pestle:
+  Policy: 0.35
+  Economic: 0.25
+  Social: 0.20
+  Technology: 0.15
+  Environmental: 0.05
+
+themes:
+  - groene biotechnologie
+  - witte biotechnologie
+  - NGT / new genomic techniques
+  - biobased economy
+  - voedseltransitie
+  - verwerkende foodindustrie
+  - eiwittransitie / sustainable protein / plant protein
+  - precision fermentation
+  - novel protein
+  - opschaling biomanufacturing
+  - reststromen verwerking
+  - cell-based ingredients
+  - cell-based foods
+  - biomassa fermentatie
+  - groene biotech beleid
+  - witte biotech beleid
+
+horizon:
+  short: 2  # jaar
+  long: 20  # jaar
+
+scope_notes:
+  synonyms:
+    - plant biotechnology
+    - new genomic techniques (NGT)
+    - biobased verwerking
+    - cellular agriculture (groene variant)
+  related_terms:
+    - biobased ingrediënten
+    - circulaire verwerking
+  exclusions:
+    - pure rode biotech (geneeskunde)
+    - witte biotech zonder food-link
+  language_differences:
+    policy:
+      - biobased economy
+      - voedseltransitie
+      - sleuteltechnologie
+      - enabling technology
+      - dwarsdoorsnijdende technologie
+    industry:
+      - opschaling verwerkende producenten
+    science:
+      - NGT
+      - metabolic engineering
+  emerging_buzzwords_2025_2026:
+    - Rapport Wennink biotech domein
+    - Biotech Booster food
+    - groene biotech soevereiniteit
+    - verwerkende keten eiwittransitie
+
+domain_keywords:
+  core:
+    - groene biotechnologie
+    - witte biotechnologie
+    - NGT
+    - new genomic techniques
+    - biobased economy
+    - voedseltransitie
+    - verwerkende foodindustrie
+    - eiwittransitie
+    - sustainable protein
+    - plant protein
+    - precision fermentation
+    - novel protein
+    - opschaling biomanufacturing
+    - reststromen verwerking
+    - cell-based ingredients
+    - cell-based foods
+    - biomassa fermentatie
+    - groene biotech beleid
+    - witte biotech beleid
+  supporting:
+    - plant biotechnology
+    - biobased verwerking
+    - cellular agriculture
+    - biobased ingrediënten
+    - circulaire verwerking
+    - verwerkende producenten
+    - metabolic engineering
+    - sleuteltechnologie
+    - enabling technology
+    - dwarsdoorsnijdende technologie
+    - biotech booster food
+    - rapport wennink biotech domein
+    - groene biotech soevereiniteit
+    - verwerkende keten eiwittransitie
+    - biomanufacturing
+    - fermentation
+    - biobased
+    - scale-up
+    - verwerkende industrie
+    - food tech
+    - groene biotech
+    - witte biotech
+  weak:
+    - biotech
+    - innovatie
+    - duurzaam
+    - circulair
+    - fermented
+  food_scope:
+    - groene biotechnologie
+    - witte biotechnologie
+    - NGT
+    - new genomic techniques
+    - voedsel
+    - food
+    - voedseltransitie
+    - verwerkende foodindustrie
+    - verwerkende industrie
+    - eiwittransitie
+    - sustainable protein
+    - plant protein
+    - precision fermentation
+    - novel protein
+    - biobased economy
+    - biobased verwerking
+    - biobased ingrediënten
+    - reststromen verwerking
+    - biomassa fermentatie
+    - cell-based ingredients
+    - cell-based foods
+    - cellular agriculture
+    - fermentation
+    - ingredient
+    - ingredients
+    - cultivated
+    - market entry
+    - markttoetreding
+    - consumentenacceptatie
+  exclude_if_only:
+    - oncology
+    - cancer therapy
+    - cardiovascular
+    - rare disease
+    - drug discovery
+    - pharmaceutical
+    - weesgeneesmiddelen
+    - geneesmiddelen
+    - farmawetgeving
+    - medicijn
+    - klinische trial
+    - medische behandeling
+    - patiënt
+    - hospital
+    - therapeutics
+    - drug development
+    - clinical trial
+    - FDA approval
+    - EMA approval
+    - brain implant
+    - spinal cord
+    - neuroscience
+    - dialysis
+    - kidney disease
+    - islet therapy
+    - insulin
+    - immunotherapy
+    - inhaler
+    - transplant
+    - layoff tracker
+    - bezuinigingen
+    - senator blasts
+    - TrumpRx
+    - stock price
+    - sinks stock
+    - phase 3 failure
+    - antibody therapy
+  known_to_government:
+    - kamerbrief
+    - kabinetsbrief
+    - rijksoverheid
+    - taskforce toekomstige welvaart
+    - nationaal groeifonds
+    - ministerie van
+    - tweede kamer
+    - staatssecretaris
+    - minister van landbouw
+    - EZK
+    - LNV
+    - NVWA
+    - RVO.nl
+    - groeifonds
+
+signal_keywords:
+  change_signals:
+    - first in EU
+    - first in europe
+    - precedent
+    - paves way
+    - ahead of regulation
+    - before approval
+    - pre-approval
+    - pre-commercial
+    - pilot program
+    - regulatory sandbox
+    - tasting event
+    - consumer trial
+    - breakthrough
+    - game changer
+    - paradigm shift
+    - disrupts
+    - outpaces regulation
+    - policy gap
+    - regulatory gap
+    - market ready
+    - commercialization begins
+    - eerste in europa
+    - proefsmaken
+    - voedseldemo
+    - regelvrije zone
+    - experimenteerruimte
+  market_signals:
+    - market entry
+    - markttoetreding
+    - commercial launch
+    - product launch
+    - launch
+    - scale-up
+    - facility opening
+    - plant opening
+    - partnership
+    - offtake
+    - pilot
+    - demonstration
+    - funding
+    - investment
+    - acquisition
+    - grant
+  research_signals:
+    - proof of concept
+    - peer reviewed
+    - published
+    - novel strain
+    - metabolic engineering
+    - bioreactor
+    - fermentation-derived
+    - prototype
+
+policy_markers:
+  regulatory:
+    - regulation
+    - EFSA
+    - Novel Food
+    - EU Biotech Act
+    - vergunning
+    - regelgeving
+    - toelating
+    - approval
+    - wetgeving
+    - EU food law
+    - voedselveiligheid
+    - NVWA
+  strategic:
+    - industriebeleid
+    - sleuteltechnologie
+    - enabling technology
+    - dwarsdoorsnijdende technologie
+    - strategic autonomy
+    - soevereiniteit
+    - concurrentievermogen
+    - infrastructuur
+    - instrumentarium
+  market_system:
+    - opschaling
+    - opschaling biomanufacturing
+    - opschaling verwerkende producenten
+    - marktontwikkeling
+    - commercialisatie
+    - cost parity
+    - financing gap
+    - investering
+    - funding
+    - venture capital
+  societal:
+    - consument
+    - acceptatie
+    - consumentenacceptatie
+    - public opinion
+    - adoption
+    - voedselzekerheid
+
+action_markers:
+  choice:
+    - keuze
+    - positionering
+    - beleidsoptie
+    - scenario
+  intervention:
+    - subsidie
+    - pilot program
+    - regulatory sandbox
+    - faciliteit
+    - publiek-private samenwerking
+  monitoring:
+    - monitor
+    - trend
+    - opkomend
+    - weak signal
+  escalation:
+    - urgent
+    - bottleneck
+    - policy gap
+    - first in EU
+
+relevance_keywords:
+  high:
+    - groene biotechnologie
+    - witte biotechnologie
+    - NGT
+    - new genomic techniques
+    - biobased economy
+    - voedseltransitie
+    - verwerkende foodindustrie
+    - eiwittransitie
+    - sustainable protein
+    - plant protein
+    - precision fermentation
+    - novel protein
+    - opschaling biomanufacturing
+    - reststromen verwerking
+    - cell-based ingredients
+    - cell-based foods
+    - biomassa fermentatie
+    - groene biotech beleid
+    - witte biotech beleid
+  medium:
+    - plant biotechnology
+    - biobased verwerking
+    - cellular agriculture
+    - biobased ingrediënten
+    - circulaire verwerking
+    - verwerkende producenten
+    - metabolic engineering
+    - sleuteltechnologie
+    - enabling technology
+    - dwarsdoorsnijdende technologie
+    - biotech booster food
+    - rapport wennink biotech domein
+    - groene biotech soevereiniteit
+    - verwerkende keten eiwittransitie
+    - biomanufacturing
+    - fermentation
+    - biobased
+    - scale-up
+    - verwerkende industrie
+    - food tech
+    - groene biotech
+    - witte biotech
+  low:
+    - biotech
+    - innovatie
+    - duurzaam
+    - circulair
+    - fermented
+  change_signals:
+    - first in EU
+    - first in europe
+    - precedent
+    - paves way
+    - ahead of regulation
+    - before approval
+    - pre-approval
+    - pre-commercial
+    - pilot program
+    - regulatory sandbox
+    - tasting event
+    - consumer trial
+    - breakthrough
+    - game changer
+    - paradigm shift
+    - disrupts
+    - outpaces regulation
+    - policy gap
+    - regulatory gap
+    - market ready
+    - commercialization begins
+    - eerste in europa
+    - proefsmaken
+    - voedseldemo
+    - regelvrije zone
+    - experimenteerruimte
+  exclude_if_only:
+    - oncology
+    - cancer therapy
+    - cardiovascular
+    - rare disease
+    - drug discovery
+    - pharmaceutical
+    - weesgeneesmiddelen
+    - geneesmiddelen
+    - farmawetgeving
+    - medicijn
+    - klinische trial
+    - medische behandeling
+    - patiënt
+    - hospital
+    - therapeutics
+    - drug development
+    - clinical trial
+    - FDA approval
+    - EMA approval
+    - brain implant
+    - spinal cord
+    - neuroscience
+    - dialysis
+    - kidney disease
+    - islet therapy
+    - insulin
+    - immunotherapy
+    - inhaler
+    - transplant
+    - layoff tracker
+    - bezuinigingen
+    - senator blasts
+    - TrumpRx
+    - stock price
+    - sinks stock
+    - phase 3 failure
+    - antibody therapy
+  food_scope:
+    - groene biotechnologie
+    - witte biotechnologie
+    - NGT
+    - new genomic techniques
+    - voedsel
+    - food
+    - voedseltransitie
+    - verwerkende foodindustrie
+    - verwerkende industrie
+    - eiwittransitie
+    - sustainable protein
+    - plant protein
+    - precision fermentation
+    - novel protein
+    - biobased economy
+    - biobased verwerking
+    - biobased ingrediënten
+    - reststromen verwerking
+    - biomassa fermentatie
+    - cell-based ingredients
+    - cell-based foods
+    - cellular agriculture
+    - fermentation
+    - ingredient
+    - ingredients
+    - cultivated
+    - market entry
+    - markttoetreding
+    - consumentenacceptatie
+  known_to_government:
+    - kamerbrief
+    - kabinetsbrief
+    - rijksoverheid
+    - taskforce toekomstige welvaart
+    - nationaal groeifonds
+    - ministerie van
+    - tweede kamer
+    - staatssecretaris
+    - minister van landbouw
+    - EZK
+    - LNV
+    - NVWA
+    - RVO.nl
+    - groeifonds
+
+pestle_keywords:
+  Policy:
+    - regulation
+    - EFSA
+    - Novel Food
+    - EU Biotech Act
+    - NGT
+    - new genomic techniques
+    - vergunning
+    - regelgeving
+    - kamerbrief
+    - kabinet
+    - beleid
+    - groene biotech beleid
+    - witte biotech beleid
+    - voedselveiligheid
+    - toelating
+    - approval
+    - wetgeving
+    - EU food law
+    - industriebeleid
+    - sleuteltechnologie
+    - enabling technology
+    - dwarsdoorsnijdende technologie
+  Economic:
+    - funding
+    - investering
+    - series
+    - scale-up
+    - venture
+    - capital
+    - markt
+    - financiering
+    - opschaling
+    - opschaling biomanufacturing
+    - opschaling verwerkende producenten
+    - marktontwikkeling
+    - food market
+    - alternative protein market
+    - cost parity
+    - commercialisatie
+    - markttoetreding
+  Social:
+    - consument
+    - acceptatie
+    - consumentenacceptatie
+    - voedseltransitie
+    - eiwittransitie
+    - maatschappij
+    - gezondheid
+    - sustainability
+    - voedselzekerheid
+    - consumer
+    - public opinion
+    - adoption
+  Technology:
+    - groene biotechnologie
+    - witte biotechnologie
+    - precision fermentation
+    - fermentation
+    - NGT
+    - cell-based ingredients
+    - cell-based foods
+    - cellular agriculture
+    - bioreactor
+    - novel protein
+    - plant protein
+    - biobased
+    - biobased verwerking
+    - reststromen verwerking
+    - biomassa fermentatie
+    - circulaire verwerking
+    - biorefinery
+    - fermentation-derived
+    - cultivated
+    - synthetic biology
+    - metabolic engineering
+  Environmental:
+    - circulair
+    - duurzaam
+    - CO2
+    - emissie
+    - waste
+    - reststromen
+    - klimaat
+    - biodiversiteit
+    - land use
+    - water footprint
+    - circular economy
+    - biobased economy
+  Policy_early:
+    - first in EU
+    - first in europe
+    - precedent
+    - paves way
+    - pre-approval
+    - regulatory sandbox
+    - experimenteerruimte
+    - regelvrije zone
+    - ahead of regulation
+    - policy gap
+    - tasting event
+    - proefsmaken
+    - eerste in europa
+    - Rapport Wennink biotech domein
+    - Biotech Booster food
+    - groene biotech soevereiniteit

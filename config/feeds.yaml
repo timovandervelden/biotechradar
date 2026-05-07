@@ -1,0 +1,64 @@
+rss:
+  # ── FOOD & VOEDSELTRANSITIE (primair) ─────────────────────────────────────
+
+  - name: Vegconomist — Fermentation
+    url: https://vegconomist.com/feed/
+    tier: 1
+
+  - name: Protein Trends NL
+    url: https://protein-trends.com/feed/
+    tier: 1
+
+  - name: GFI (Good Food Institute)
+    url: https://gfi.org/feed/
+    tier: 1
+
+  - name: Eiwittrends NL
+    url: https://www.eiwittrends.nl/feed/
+    tier: 2
+
+  # ── BIOTECH & INNOVATIE (breed, maar food-filter actief) ──────────────────
+
+  - name: BioPharma Trend
+    url: https://www.biopharmatrend.com/rss/
+    tier: 1
+
+  - name: HollandBIO
+    url: https://www.hollandbio.nl/feed/
+    tier: 2
+
+  - name: VentureCapital.nl
+    url: https://venturecapital.nl/feed/
+    tier: 2
+
+  # ── WETENSCHAPPELIJK VROEG-SIGNAAL ────────────────────────────────────────
+
+  - name: PubMed - precision fermentation
+    url: https://pubmed.ncbi.nlm.nih.gov/rss/search/?term=precision+fermentation+food&format=abstract&limit=10
+    tier: 1
+
+  - name: PubMed - alternative protein Netherlands
+    url: https://pubmed.ncbi.nlm.nih.gov/rss/search/?term=alternative+protein+Netherlands&format=abstract&limit=10
+    tier: 1
+
+  # ── GOOGLE ALERTS (handmatig instellen via google.com/alerts) ────────────
+  # Zoekterm → Show options → Deliver to: RSS feed → URL hieronder invullen
+
+  # - name: Google Alert - precision fermentation Netherlands
+  #   url: PLACEHOLDER
+  #   tier: 1
+
+  # - name: Google Alert - voedseltransitie opschaling
+  #   url: PLACEHOLDER
+  #   tier: 1
+
+  # - name: Google Alert - EFSA Novel Food fermentation
+  #   url: PLACEHOLDER
+  #   tier: 1
+
+  # ── VERWIJDERD (0 relevante signalen voor voedseltransitie) ───────────────
+  # - Fierce Biotech (farma-gedomineerd, login vereist)
+  # - STAT News (VS farma, login vereist)
+  # - Sifted (EU tech generiek, weinig food)
+  # - EU Startups (generiek, weinig food)
+  # - The Next Web (tech generiek)
